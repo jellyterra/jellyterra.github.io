@@ -1,0 +1,31 @@
+documentor:
+  root: "/blog"
+
+  lang: "en"
+  theme: "dark"
+
+  title: "Jelly Terra's Starry Space"
+
+  locales:
+    - locale: "en"
+      title: "English"
+
+    - locale: "zh"
+      title: "中文"
+
+  header:
+    title: '<span style="margin: 0 20px; font-size: 24px"><span style="font-weight: bolder">Jelly Terra</span>"s Starry Space</span>'
+
+    logo:
+      src: "/assets/img/avatar_round.png"
+      height: 50
+
+    nav:
+      - title: "GitHub"
+        link: "https://github.com/jellyterra"
+
+  footer:
+    copyright:
+      owner: "Jelly Terra"
+      date: "2024"
+      license: "Text is available under the <a target=\"_blank\" href=\"https://creativecommons.org/licenses/by-sa/4.0/legalcode.en\">Creative Commons Attribution-ShareAlike License 4.0</a>; additional terms may apply."

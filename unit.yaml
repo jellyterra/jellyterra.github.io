@@ -1,0 +1,6 @@
+unit:
+  - template: "internal"
+    template_key: "page"
+    output: "/404.html"
+    define:
+      content: "404.html"

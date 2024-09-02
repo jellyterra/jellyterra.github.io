@@ -1,5 +1,2 @@
-# Lock
-*.lock
-
-# Hugo
-public/
+# IntelliJ
+.idea/

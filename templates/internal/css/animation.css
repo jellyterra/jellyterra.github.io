@@ -1,0 +1,14 @@
+.flash {
+    font-weight: bolder;
+
+    animation: fadeFlash 1s infinite;
+}
+
+@keyframes fadeFlash {
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}

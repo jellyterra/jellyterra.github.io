@@ -1,0 +1,6 @@
+unit:
+  - template: "internal"
+    template_key: "page"
+    output: "/index.html"
+    define:
+      content: "mainpage.html"

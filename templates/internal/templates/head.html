@@ -1,0 +1,6 @@
+<link rel="icon" type="image/png" href="{{ This.icon }}"/>
+<link rel="stylesheet" href="{{ api.Attr.templateBase }}/css/base.css"/>
+<script src="{{ api.Attr.templateBase}}/script/prompt.js"></script>
+{{ api.Apply "com.github.webpagine.darkmode" "head" This }}
+{{ range This.link }}<link rel="{{ .rel }}" href="{{ .href }}"/>{{ end }}
+{{ template "debug.html" }}
