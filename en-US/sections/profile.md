@@ -1,5 +1,7 @@
 # Profile
 
+Boy born in 2006.
+
 💙 MBTI: ISTP [\[Virtuoso\]](https://www.16personalities.com/istp-personality)
 
 ⚒️ Go, C/C++, Scala, Kotlin, Python, Rust
