@@ -4,3 +4,9 @@ unit:
     output: "/404.html"
     define:
       content: "404.html"
+
+  - template: "internal"
+    template_key: "page"
+    output: "/index.html"
+    define:
+      content: "mainpage.html"
