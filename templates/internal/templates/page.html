@@ -3,6 +3,7 @@
 <head>
 <title>{{ .title }}</title>
 {{ template "head.html" . }}
+{{ api.Apply "com.github.webpagine.dashanalytics" "apply" . }}
 </head>
 <body class="theme-{{ .theme }}" onload="initDarkMode(); initPrompt()">
 {{ template "header.html" . }}

@@ -7,3 +7,6 @@
 [submodule "templates/documentor"]
 	path = templates/documentor
 	url = https://github.com/webpagine/documentor
+[submodule "templates/dashanalytics"]
+	path = templates/dashanalytics
+	url = https://github.com/webpagine/dashanalytics

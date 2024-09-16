@@ -99,3 +99,6 @@ internal:
 
 documentor:
   icon: "https://avatars.githubusercontent.com/u/168826426"
+
+analytics:
+  server: "https://analytics.jellyterra.com"
