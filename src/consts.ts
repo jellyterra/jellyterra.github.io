@@ -59,7 +59,7 @@ export const HEADER = {
         },
         {
             title: "GitHub",
-            href: "https://github.com"
+            href: "https://github.com/jellyterra"
         },
     ],
 }
