@@ -1,0 +1,11 @@
+---
+const {media} = Astro.props
+---
+
+<div class="m-5 flex gap-10 dark:invert">
+    {media.map((item: any) =>
+            <a target="_blank" href={item.href}>
+                <img class="size-8" src={`https://simpleicons.org/icons/${item.icon}.svg`} alt={item.icon}>
+            </a>
+    )}
+</div>

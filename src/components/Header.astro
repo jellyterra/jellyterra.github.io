@@ -1,0 +1,36 @@
+---
+import DarkModeButton from "./ui/DarkModeButton.astro"
+
+interface Props {
+    header: {
+        logo: {
+            src: string
+            width: number
+            height: number
+        },
+        nav: {
+            title: string
+            href: string
+        }[]
+    }
+}
+
+const {header} = Astro.props
+---
+
+<header class="m-0 pt-5 pb-5 pl-20 pr-20 flex flex-row items-center dark:text-white">
+    <div><a href="/"><img src={header.logo.src} width={header.logo.width} height={header.logo.height} alt=""></a></div>
+
+    <nav class="ml-auto flex flex-row items-center gap-10 font-bold">
+        {
+            header.nav.map((link: any) => (
+                link.href.startsWith('http') ?
+                        <a class="select-none rounded-l-full rounded-r-full pt-2 pb-2 pl-4 pr-4 duration-200 hover:bg-[#f58] hover:text-white"
+                           target="_blank" href={link.href}>{link.title}</a> :
+                        <a class="select-none rounded-l-full rounded-r-full pt-2 pb-2 pl-4 pr-4 duration-200 hover:bg-[#ddd] dark:hover:bg-black"
+                           href={link.href}>{link.title}</a>
+            ))
+        }
+        <DarkModeButton></DarkModeButton>
+    </nav>
+</header>

@@ -1,0 +1,78 @@
+---
+import MediaShowcase from "./MediaShowcase.astro";
+interface Props {
+    footer: {
+        logo: {
+            src: string
+            width: number
+            height: number
+        }
+        lists: {
+            title: string
+            links: {
+                title: string
+                href: string
+            }[]
+        }[]
+        media: {
+            icon: string
+            href: string
+        }[]
+        copyright: {
+            owner: string
+            date: number
+            license_name: string
+            license_url: string
+        }
+    }
+}
+
+const {footer} = Astro.props
+---
+
+<footer class="m-0 p-12 flex flex-col bg-[#dedede] dark:bg-[#111] dark:text-white">
+    <div class="flex flex-col lg:flex-row gap-28">
+        <div class="ml-10">
+            <img width={footer.logo.width} height={footer.logo.height} src={footer.logo.src} alt="">
+        </div>
+
+        <div class="flex flex-col lg:flex-row gap-5">
+            {footer.lists.map((list: any) =>
+                    <div class="flex flex-col gap-2 w-52">
+                        <div class="font-bold">{list.title}</div>
+                        {list.links.map((link: any) =>
+                                <div><a target="_blank" href={link.href}>{link.title}</a></div>
+                        )}
+                    </div>
+            )}
+        </div>
+
+        <MediaShowcase media={footer.media}></MediaShowcase>
+    </div>
+
+    <hr>
+
+    <div class="flex flex-row pl-7 pr-7">
+        <div>
+            <span class="font-bold">&copy; Copyright {footer.copyright.date} {footer.copyright.owner}</span>
+            <span>Text is available under the <a target="_blank"
+                                                 href={footer.copyright.license_url}>{footer.copyright.license_name}</a>; additional terms may apply.</span>
+        </div>
+    </div>
+</footer>
+
+<style>
+    hr {
+        display: block;
+        height: 0;
+        overflow: visible;
+        padding: 0;
+        border: 0;
+        margin: 48px 0;
+        border-bottom: 1px solid #333;
+    }
+
+    a {
+        @apply underline-offset-2 hover:underline
+    }
+</style>

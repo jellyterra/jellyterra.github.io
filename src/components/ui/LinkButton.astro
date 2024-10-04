@@ -1,0 +1,16 @@
+---
+interface Props {
+    title: string,
+    href: string,
+}
+
+const {title, href} = Astro.props
+---
+
+<div>
+    {href.startsWith('http') ?
+            <a class="select-none rounded-l-full rounded-r-full pt-2 pb-2 pl-5 pr-5 font-bold text-white duration-200 shadow hover:shadow-xl bg-[#ff336a] hover:bg-[#f58]"
+               target="_blank" href={href}>{title}</a> :
+            <a class="select-none rounded-l-full rounded-r-full pt-2 pb-2 pl-5 pr-5 font-bold duration-200 shadow hover:shadow-xl bg-[#ccc] hover:bg-[#ddd] dark:bg-[#2a2a2e] dark:hover:bg-black"
+               href={href}>{title}</a>}
+</div>

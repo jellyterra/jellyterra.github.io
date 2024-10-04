@@ -1,0 +1,132 @@
+---
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+import {HEADER, FOOTER, PROMPT_ATTR} from '../consts'
+import BaseHead from "../components/BaseHead.astro"
+import PromptStyleText from "../components/PromptStyleText.astro";
+import LinkButton from "../components/ui/LinkButton.astro";
+import MediaShowcase from "../components/MediaShowcase.astro";
+
+import {Content as Profile} from "../content/intro/profile.md"
+import {Content as Bookshelf} from "../content/intro/bookshelf.md"
+import {Content as BookList} from "../content/intro/booklist.md"
+import {Content as LostFound} from "../content/intro/lost_found.md"
+import {Content as LostList} from "../content/intro/lost_list.md"
+import {Content as CodeStatus} from "../content/intro/code_status.md"
+import {Content as More} from "../content/intro/more.md"
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <BaseHead title="Jelly Terra"></BaseHead>
+</head>
+<body class="dark">
+<div class="h-screen flex flex-col justify-between">
+    <div class="sticky top-0">
+        <Header header={HEADER}/>
+    </div>
+    <div class="relative flex flex-col gap-5 items-center text-center">
+        <img src="/favicon.png" width="230" height="230" alt="avatar">
+        <p style="font-size: 200%">
+            <span class="font-bold">Jelly Terra &lambda;</span><br/>
+            <PromptStyleText attr={PROMPT_ATTR}></PromptStyleText>
+        </p>
+        <div class="flex flex-row gap-5">
+            <LinkButton title="VIEW GITHUB PROFILE" href="https://github.com/jellyterra"/>
+            <LinkButton href="/blog" title="VIEW BLOG"/>
+        </div>
+    </div>
+    <div class="ml-auto mr-auto mb-20">
+        <MediaShowcase media={FOOTER.media}/>
+    </div>
+</div>
+<main>
+    <section class="fill">
+        <div>
+            <Profile/>
+        </div>
+        <div>
+            <img class="object-scale-down" src="/favicon.png" alt="avatar">
+        </div>
+    </section>
+    <section class="normal">
+        <div>
+            <Bookshelf/>
+        </div>
+        <div>
+            <BookList/>
+        </div>
+    </section>
+    <section class="fill">
+        <div>
+            <LostFound/>
+        </div>
+        <div>
+            <LostList/>
+        </div>
+    </section>
+    <section class="normal">
+        <div class="text-right">
+            <CodeStatus/>
+        </div>
+        <div class="flex flex-col gap-1">
+            <img src="https://github-readme-stats.vercel.app/api?username=jellyterra&show_icons=true&theme=radical"
+                 alt="GitHub Stats">
+            <img src="https://github-readme-stats.vercel.app/api/wakatime?username=jellyterra&layout=compact"
+                 alt="WakaTime Stats">
+        </div>
+    </section>
+    <section class="fill">
+        <div>
+            <More/>
+        </div>
+    </section>
+</main>
+<div class="content-center text-center" style="height: 60vh">
+    <div class="m-auto flex flex-col gap-20">
+        <h1>踏雪留痕，寻梅采香</h1>
+        <LinkButton href="https://github.com/jellyterra" title="CHECK MORE ON MY GITHUB"/>
+    </div>
+</div>
+<Footer footer={FOOTER}/>
+</body>
+</html>
+
+<style>
+    h1 {
+        font-size: 40px;
+        line-height: 200%;
+
+        @apply font-bold;
+    }
+
+    section {
+        padding: 10vh 10vw;
+
+        line-height: 200%;
+
+        h1 {
+            font-size: 40px;
+            line-height: 200%;
+
+            @apply font-bold;
+        }
+
+        ul {
+            @apply list-disc;
+        }
+
+        a {
+            @apply font-bold underline underline-offset-2;
+        }
+    }
+
+    section.normal {
+        @apply flex flex-col lg:flex-row-reverse justify-between;
+    }
+
+    section.fill {
+        @apply flex flex-col lg:flex-row justify-between bg-[#ff006a] text-white;
+    }
+</style>

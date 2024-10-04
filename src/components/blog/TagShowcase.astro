@@ -1,0 +1,26 @@
+---
+interface Props {
+    tags: Array<string>
+}
+
+const {tags} = Astro.props
+---
+
+{
+    tags.length > 0 ?
+    <div class="flex flex-row gap-2 items-center">
+        {
+            tags.map((tag: string) => (
+                    <div class="tag">{tag}</div>
+            ))
+        }
+    </div>:null}
+
+<style>
+    .tag {
+        padding: 1px 10px;
+        border: 2px solid;
+
+        @apply rounded-full font-bold duration-200 text-blue-500 hover:text-blue-300 border-blue-500 hover:border-blue-300;
+    }
+</style>

@@ -1,0 +1,31 @@
+---
+import Footer from "../../components/Footer.astro";
+import BaseHead from "../../components/BaseHead.astro";
+import {BLOG_HEADER, FOOTER} from "../../consts";
+
+import {getCollection} from 'astro:content'
+import BlogHeader from "../../components/blog/BlogHeader.astro";
+import BlogEntry from "../../components/blog/BlogEntry.astro";
+
+const collection = await getCollection('blog')
+---
+
+<html lang="en">
+<head>
+    <BaseHead title="Blog Index"/>
+</head>
+
+<body class="dark">
+<div class="sticky top-0">
+    <BlogHeader header={BLOG_HEADER}/>
+</div>
+<main class="p-10 flex flex-col gap-5 min-h-screen">
+    {
+        collection.map((entry) => (
+                <BlogEntry entry={entry}/>
+        ))
+    }
+</main>
+<Footer footer={FOOTER}/>
+</body>
+</html>

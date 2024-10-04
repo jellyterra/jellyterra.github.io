@@ -1,0 +1,68 @@
+---
+interface Props {
+    attr: {
+        texts: string[]
+        rounds: number
+
+        duration: {
+            type: number
+            back: number
+            stay: number
+            next: number
+        }
+    }
+}
+
+const {attr} = Astro.props
+---
+
+<span class="font-bold">&gt;</span>
+<span id="promptStyleText"></span>
+<span class="flash">_</span>
+
+<script define:vars={{attr}}>
+    async function delay(timeout) {
+        await new Promise(resolve => setTimeout(resolve, timeout))
+    }
+
+    async function update(text) {
+        const e = document.getElementById('promptStyleText')
+        while (e.textContent.length != 0) {
+            e.textContent = e.textContent.substring(0, e.textContent.length - 1)
+            await delay(attr.duration.back)
+        }
+        await delay(attr.duration.stay)
+        for (let i = 0; i < text.length; i++) {
+            e.textContent += (text.at(i))
+            if (!text.charAt(i).match(/[,.\s]/g)) await delay(attr.duration.type)
+        }
+    }
+
+    async function start() {
+        for (let i = 0; i < attr.rounds; i++) {
+            for (const text of attr.texts) {
+                await update(text)
+                await delay(attr.duration.next)
+            }
+        }
+    }
+
+    start()
+</script>
+
+<style>
+    .flash {
+        font-weight: bolder;
+
+        animation: fadeFlash 1s infinite;
+    }
+
+    @keyframes fadeFlash {
+        0%, 100% {
+            opacity: 0;
+        }
+        50% {
+            opacity: 1;
+        }
+    }
+</style>

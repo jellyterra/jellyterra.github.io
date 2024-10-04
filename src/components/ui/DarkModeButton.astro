@@ -1,0 +1,52 @@
+---
+
+---
+
+<span class="select-none dark-mode-button material-symbols-outlined">dark_mode</span>
+
+<script>
+    function update() {
+        const elements = document.getElementsByClassName('dark-mode-button')
+
+        switch (localStorage.getItem('dark')) {
+            case '1':
+                document.body.classList.add('dark')
+                for (let i = 0; i < elements.length; i++) {
+                    elements[i].textContent = 'dark_mode'
+                }
+                break
+            case '0':
+                document.body.classList.remove('dark')
+                for (let i = 0; i < elements.length; i++) {
+                    elements[i].textContent = 'light_mode'
+                }
+                break
+        }
+    }
+
+    function toggleDarkMode() {
+        switch (localStorage.getItem('dark')) {
+            case '1':
+                localStorage.setItem('dark', '0')
+                break
+            case '0':
+                localStorage.setItem('dark', '1')
+                break
+        }
+        update()
+    }
+
+    document.querySelectorAll('.dark-mode-button').forEach((element) => {
+        element.addEventListener('click', toggleDarkMode)
+    })
+
+    if (localStorage.getItem('dark') == null) {
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            localStorage.setItem('dark', '1')
+        } else {
+            localStorage.setItem('dark', '0')
+        }
+    }
+
+    update()
+</script>

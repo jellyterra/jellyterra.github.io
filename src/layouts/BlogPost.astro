@@ -1,0 +1,71 @@
+---
+import {type CollectionEntry} from 'astro:content'
+
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import {BLOG_HEADER, FOOTER, SOURCE} from "../consts";
+import BlogHeader from "../components/blog/BlogHeader.astro";
+import TagShowcase from "../components/blog/TagShowcase.astro";
+import IconButton from "../components/ui/IconButton.astro";
+
+interface Props {
+    source_base: string
+    entry: CollectionEntry<'blog'>
+}
+
+const {source_base, entry} = Astro.props;
+---
+
+<html lang={entry.data.lang}>
+<head>
+    <BaseHead title={entry.data.title}/>
+</head>
+
+<body class="dark">
+<div class="sticky top-0">
+    <BlogHeader header={BLOG_HEADER}/>
+</div>
+<main class="min-h-screen p-20 flex flex-col gap-10">
+    <div class="flex flex-col gap-5">
+        <div class="font-bold text-6xl">{entry.data.title}</div>
+        <div class="flex flex-row gap-5 items-center">
+            <IconButton><a class="material-symbols-outlined"
+                           href={`${SOURCE.base}/${source_base}/${entry.id}`}>history</a></IconButton>
+            <div class="text-gray-500">
+                {
+                    entry.data.updatedDate != undefined ?
+                            <div>Updated on {entry.data.updatedDate.toString()}</div> : null
+                }
+                <div>Created on {entry.data.pubDate.toString()}</div>
+            </div>
+        </div>
+        <TagShowcase tags={entry.data.tags}></TagShowcase>
+    </div>
+    <hr>
+    <article class="flex flex-col gap-5">
+        <slot/>
+    </article>
+</main>
+<Footer footer={FOOTER}/>
+</body>
+</html>
+
+<style>
+    article {
+        h1 {
+            @apply mt-5 font-bold text-4xl;
+        }
+
+        h2 {
+            @apply font-bold text-2xl;
+        }
+
+        h3 {
+            @apply font-bold text-xl;
+        }
+
+        a {
+            @apply font-bold underline;
+        }
+    }
+</style>
