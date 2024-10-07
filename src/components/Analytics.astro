@@ -9,6 +9,7 @@ interface Props {
 const {analytics} = Astro.props;
 ---
 
+{import.meta.env.PROD?
 <script define:vars={{analytics}}>
     function uuidGen() {
         return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, c => (+c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> +c / 4).toString(16))
@@ -19,4 +20,4 @@ const {analytics} = Astro.props;
 
     fetch(`${analytics.host}/api/v1/reportAccess?deploy_time=${analytics.deployTime}&uuid=${uuid}&target=${encodeURIComponent(location.href)}&user_agent=${encodeURIComponent(navigator.userAgent)}`).then(() => {
     })
-</script>
+</script>:null}
