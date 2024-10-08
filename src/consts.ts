@@ -54,6 +54,10 @@ export const HEADER = {
             href: "/blog"
         },
         {
+            title: "Cloud Drive",
+            href: "https://nextcloud.jellyterra.com"
+        },
+        {
             title: "Live Stream",
             href: "https://live.bilibili.com/31960659"
         },

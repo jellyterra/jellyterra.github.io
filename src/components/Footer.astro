@@ -31,7 +31,7 @@ const {footer} = Astro.props
 ---
 
 <footer class="m-0 p-12 flex flex-col bg-[#dedede] dark:bg-[#111] dark:text-white">
-    <div class="flex flex-col lg:flex-row gap-28">
+    <div class="flex flex-wrap gap-28">
         <div class="ml-10">
             <img width={footer.logo.width} height={footer.logo.height} src={footer.logo.src} alt="">
         </div>
@@ -52,12 +52,10 @@ const {footer} = Astro.props
 
     <hr>
 
-    <div class="flex flex-row pl-7 pr-7">
-        <div>
-            <span class="font-bold">&copy; Copyright {footer.copyright.date} {footer.copyright.owner}</span>
-            <span>Text is available under the <a target="_blank"
-                                                 href={footer.copyright.license_url}>{footer.copyright.license_name}</a>; additional terms may apply.</span>
-        </div>
+    <div class="pl-7 pr-7">
+        <span class="font-bold">&copy; Copyright {footer.copyright.date} {footer.copyright.owner}</span>
+        <span>Text is available under the <a target="_blank"
+                                             href={footer.copyright.license_url}>{footer.copyright.license_name}</a>; additional terms may apply.</span>
     </div>
 </footer>
 

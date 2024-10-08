@@ -27,21 +27,29 @@ const {source_base, entry} = Astro.props;
     <BlogHeader header={BLOG_HEADER}/>
 </div>
 <main class="min-h-screen p-20 flex flex-col gap-10">
-    <div class="flex flex-col gap-5">
-        <div class="font-bold text-6xl">{entry.data.title}</div>
-        <div class="text-2xl text-gray-500">{entry.data.description}</div>
-        <div class="flex flex-row gap-5 items-center">
-            <IconButton><a class="material-symbols-outlined"
-                           href={`${SOURCE.base}/${source_base}/${entry.id}`}>history</a></IconButton>
-            <div class="text-gray-500">
-                {
-                    entry.data.updatedDate != undefined ?
-                            <div>Updated on {entry.data.updatedDate.toString()}</div> : null
-                }
-                <div>Created on {entry.data.pubDate.toString()}</div>
+    <div class="flex flex-wrap gap-5 justify-between">
+        <div class="flex flex-col gap-5">
+            <div class="font-bold text-6xl">{entry.data.title}</div>
+            <div class="text-2xl text-gray-500">{entry.data.description}</div>
+            <div class="flex flex-wrap gap-5 items-center">
+                <IconButton><a class="material-symbols-outlined"
+                               href={`${SOURCE.base}/${source_base}/${entry.id}`}>history</a></IconButton>
+                <div class="text-gray-500">
+                    {
+                        entry.data.updatedDate != undefined ?
+                                <div>Updated on {entry.data.updatedDate.toString()}</div> : null
+                    }
+                    <div>Created on {entry.data.pubDate.toString()}</div>
+                </div>
             </div>
+            <TagShowcase tags={entry.data.tags}></TagShowcase>
         </div>
-        <TagShowcase tags={entry.data.tags}></TagShowcase>
+        <div class="mb-10 max-h-40 max-w-80">
+            {
+                entry.data.sideImage != undefined ?
+                        <img class="rounded object-contain" src={entry.data.sideImage} alt=""/> : null
+            }
+        </div>
     </div>
     <hr>
     <article class="flex flex-col gap-5">
@@ -74,6 +82,12 @@ const {source_base, entry} = Astro.props;
             line-height: 200%;
 
             @apply rounded-2xl p-10 duration-200 shadow hover:shadow-xl dark:shadow-blue-500 dark:hover:shadow-blue-300 text-gray-800 dark:text-gray-200 bg-gray-300 dark:bg-gray-600;
+        }
+
+        p {
+            code {
+                @apply rounded p-1 bg-gray-300 dark:bg-gray-600;
+            }
         }
 
         .astro-code {

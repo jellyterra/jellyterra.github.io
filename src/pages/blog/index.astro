@@ -6,6 +6,7 @@ import {BLOG_HEADER, FOOTER} from "../../consts";
 import {getCollection} from 'astro:content'
 import BlogHeader from "../../components/blog/BlogHeader.astro";
 import BlogEntry from "../../components/blog/BlogEntry.astro";
+import BlogEntryList from "../../components/blog/BlogEntryList.astro";
 
 const collection = await getCollection('blog')
 ---
@@ -19,13 +20,7 @@ const collection = await getCollection('blog')
 <div class="sticky top-0">
     <BlogHeader header={BLOG_HEADER}/>
 </div>
-<main class="p-10 flex flex-col gap-5 min-h-screen">
-    {
-        collection.reverse().map((entry) => (
-                <BlogEntry entry={entry}/>
-        ))
-    }
-</main>
+<BlogEntryList collection={collection}/>
 <Footer footer={FOOTER}/>
 </body>
 </html>
