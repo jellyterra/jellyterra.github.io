@@ -1,0 +1,31 @@
+---
+interface Props {
+    config: {
+        repo: string
+        repoId: string
+        category: string
+        categoryId: string
+    }
+}
+
+const {config} = Astro.props
+---
+
+<div>
+    <script src="https://giscus.app/client.js"
+            data-repo={config.repo}
+            data-repo-id={config.repoId}
+            data-category={config.category}
+            data-category-id={config.categoryId}
+            data-mapping="og:title"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="preferred_color_scheme"
+            data-lang="zh-CN"
+            data-loading="lazy"
+            crossorigin="anonymous"
+            async>
+    </script>
+</div>

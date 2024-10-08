@@ -194,3 +194,10 @@ export const BLOG_HEADER = {
         },
     ],
 }
+
+export const GISCUS_CONFIG = {
+    repo: "jellyterra/jellyterra.github.io",
+    repoId: "R_kgDOLt6GLQ",
+    category: "Announcements",
+    categoryId: "DIC_kwDOLt6GLc4CjJB_",
+}

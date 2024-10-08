@@ -3,10 +3,11 @@ import {type CollectionEntry} from 'astro:content'
 
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
-import {BLOG_HEADER, FOOTER, SOURCE} from "../consts";
+import {BLOG_HEADER, FOOTER, GISCUS_CONFIG, SOURCE} from "../consts";
 import BlogHeader from "../components/blog/BlogHeader.astro";
 import TagShowcase from "../components/blog/TagShowcase.astro";
 import IconButton from "../components/ui/IconButton.astro";
+import Giscus from "../components/blog/Giscus.astro";
 
 interface Props {
     source_base: string
@@ -55,6 +56,13 @@ const {source_base, entry} = Astro.props;
     <article class="flex flex-col gap-5">
         <slot/>
     </article>
+    {
+        entry.data.comment == true ?
+                <div class="mt-20 text-center">
+                    <div class="text-2xl font-bold">Let me know you were here!</div>
+                    <Giscus config={GISCUS_CONFIG}/>
+                </div> : null
+    }
 </main>
 <Footer footer={FOOTER}/>
 </body>
