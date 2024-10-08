@@ -4,12 +4,13 @@ import Analytics from "./Analytics.astro";
 import {ANALYTICS} from "../consts";
 
 interface Props {
-    title: string;
+    title: string
+    data?: any
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const {title} = Astro.props;
+const {title, data} = Astro.props;
 ---
 
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
@@ -31,6 +32,8 @@ const {title} = Astro.props;
 <meta property="og:type" content="website"/>
 <meta property="og:url" content={Astro.url}/>
 <meta property="og:title" content={title}/>
+{ data?.sideImage != undefined?
+<meta property="og:image" content={data.sideImage}/>:null}
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image"/>
