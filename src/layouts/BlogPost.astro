@@ -89,6 +89,15 @@ const {source_base, entry} = Astro.props;
             @apply rounded-2xl p-10 duration-200 shadow hover:shadow-xl dark:shadow-blue-500 dark:hover:shadow-blue-300 text-gray-800 dark:text-gray-200 bg-gray-300 dark:bg-gray-600;
         }
 
+        blockquote:before {
+            color: #ccc;
+            content: open-quote;
+            font-size: 4em;
+            line-height: 0.1em;
+            margin-right: 0.25em;
+            vertical-align: -0.4em;
+        }
+
         p {
             code {
                 @apply rounded p-1 bg-gray-300 dark:bg-gray-600;
