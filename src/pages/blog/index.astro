@@ -1,14 +1,20 @@
 ---
 import Footer from "../../components/Footer.astro";
 import BaseHead from "../../components/BaseHead.astro";
-import {BLOG_HEADER, FOOTER} from "../../consts";
+import {BG_RANDOM_IMAGE_SRC, BLOG_HEADER, FOOTER} from "../../consts";
 
 import {getCollection} from 'astro:content'
 import BlogHeader from "../../components/blog/BlogHeader.astro";
-import BlogEntry from "../../components/blog/BlogEntry.astro";
 import BlogEntryList from "../../components/blog/BlogEntryList.astro";
+import TagShowcase from "../../components/blog/TagShowcase.astro";
 
 const collection = await getCollection('blog')
+
+const tagSet = new Set<string>()
+
+collection.map((entry: any) => entry.data.tags.map((tag: string) => tagSet.add(tag)))
+
+const tags = Array.from(tagSet.values())
 ---
 
 <html lang="en">
@@ -16,11 +22,21 @@ const collection = await getCollection('blog')
     <BaseHead title="Blog Index"/>
 </head>
 
-<body class="dark">
+<body class="dark" style={`background-image: url('${BG_RANDOM_IMAGE_SRC || ""}')`}>
 <div class="sticky top-0">
     <BlogHeader header={BLOG_HEADER}/>
 </div>
-<BlogEntryList collection={collection}/>
+<div class="p-10 flex flex-col lg:flex-row-reverse gap-5">
+    <div>
+        <div class="card flex flex-col gap-5 sticky top-20">
+            <div class="text-2xl font-bold">Tags</div>
+            <TagShowcase tags={tags}/>
+        </div>
+    </div>
+    <div class="w-full">
+        <BlogEntryList collection={collection}/>
+    </div>
+</div>
 <Footer footer={FOOTER}/>
 </body>
 </html>

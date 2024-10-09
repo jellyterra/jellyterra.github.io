@@ -1,0 +1,17 @@
+---
+interface Props {
+    icon: string
+    href: string
+    text?: string
+}
+
+const {icon, href, text} = Astro.props
+---
+
+<a class="select-none flex flex-row gap-1 items-center font-bold duration-200 hover:text-gray-500" href={href}>
+    <div class="material-symbols-outlined">{icon}</div>
+    {
+        text &&
+            <div>{text}</div>
+    }
+</a>

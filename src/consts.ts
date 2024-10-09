@@ -14,6 +14,8 @@ function formatTime(date: Date) {
 export const SITE_TITLE = 'Jelly Terra';
 export const SITE_DESCRIPTION = 'Jelly Terra\'s Website';
 
+export const BG_RANDOM_IMAGE_SRC = 'https://dmoe.cc/random.php'
+
 export const ANALYTICS = {
     host: 'https://analytics.jellyterra.com',
     deployTime: formatTime(new Date(Date.now()))

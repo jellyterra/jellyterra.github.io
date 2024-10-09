@@ -3,11 +3,11 @@ import {type CollectionEntry} from 'astro:content'
 
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
-import {BLOG_HEADER, FOOTER, GISCUS_CONFIG, SOURCE} from "../consts";
+import {BLOG_HEADER, FOOTER, GISCUS_CONFIG, BG_RANDOM_IMAGE_SRC, SOURCE} from "../consts";
 import BlogHeader from "../components/blog/BlogHeader.astro";
 import TagShowcase from "../components/blog/TagShowcase.astro";
-import IconButton from "../components/ui/IconButton.astro";
 import Giscus from "../components/blog/Giscus.astro";
+import IconLink from "../components/ui/IconLink.astro";
 
 interface Props {
     source_base: string
@@ -15,6 +15,11 @@ interface Props {
 }
 
 const {source_base, entry} = Astro.props;
+
+const bodyStyle = `background-image: url('${entry.data.backgroundImage || BG_RANDOM_IMAGE_SRC || ""}')`
+
+const pubDate = entry.data.pubDate
+const updatedDate = entry.data.updatedDate
 ---
 
 <html lang={entry.data.lang}>
@@ -23,24 +28,24 @@ const {source_base, entry} = Astro.props;
     <BaseHead title={entry.data.title} data={entry.data}/>
 </head>
 
-<body class="dark">
+<body class="dark" style={bodyStyle}>
 <div class="sticky top-0">
     <BlogHeader header={BLOG_HEADER}/>
 </div>
-<main class="min-h-screen p-5 lg:p-20 flex flex-col gap-10">
+<main class="min-h-screen p-5 lg:p-20 flex flex-col gap-10 bg-opacity bg-light dark:bg-dark">
     <div class="flex flex-wrap gap-5 justify-between">
         <div class="flex flex-col gap-5">
             <div class="font-bold text-6xl">{entry.data.title}</div>
             <div class="text-2xl text-gray-500">{entry.data.description}</div>
             <div class="flex flex-wrap gap-5 items-center">
-                <IconButton><a class="material-symbols-outlined"
-                               href={`${SOURCE.base}/${source_base}/${entry.id}`}>history</a></IconButton>
+                <IconLink icon="history" href={`${SOURCE.base}/${source_base}/${entry.id}`} text="History"/>
                 <div class="text-gray-500">
                     {
                         entry.data.updatedDate != undefined ?
-                                <div>Updated on {entry.data.updatedDate.toString()}</div> : null
+                                <div>Updated at <span id="update_date">{entry.data.updatedDate.toString()}</span>
+                                </div> : null
                     }
-                    <div>Created on {entry.data.pubDate.toString()}</div>
+                    <div>Published at <span id="publish_date">{entry.data.pubDate.toString()}</span></div>
                 </div>
             </div>
             <TagShowcase tags={entry.data.tags}></TagShowcase>
@@ -64,6 +69,16 @@ const {source_base, entry} = Astro.props;
 <Footer footer={FOOTER}/>
 </body>
 </html>
+
+<script define:vars={{pubDate, updatedDate}}>
+    document.addEventListener('DOMContentLoaded', () => {
+        const publishDateElement = document.getElementById('publish_date')
+        const updateDateElement = document.getElementById('update_date')
+
+        publishDateElement.textContent = pubDate.toDateString()
+        updateDateElement && (updateDateElement.textContent = updatedDate?.toDateString())
+    })
+</script>
 
 <style>
     article {
