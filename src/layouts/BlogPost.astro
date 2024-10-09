@@ -27,7 +27,7 @@ const {source_base, entry} = Astro.props;
 <div class="sticky top-0">
     <BlogHeader header={BLOG_HEADER}/>
 </div>
-<main class="min-h-screen p-20 flex flex-col gap-10">
+<main class="min-h-screen p-5 lg:p-20 flex flex-col gap-10">
     <div class="flex flex-wrap gap-5 justify-between">
         <div class="flex flex-col gap-5">
             <div class="font-bold text-6xl">{entry.data.title}</div>
@@ -58,10 +58,7 @@ const {source_base, entry} = Astro.props;
     </article>
     {
         entry.data.comment == true ?
-                <div class="mt-20 text-center">
-                    <div class="text-2xl font-bold">Let me know you were here!</div>
-                    <Giscus config={GISCUS_CONFIG}/>
-                </div> : null
+                <Giscus config={GISCUS_CONFIG}/> : null
     }
 </main>
 <Footer footer={FOOTER}/>
