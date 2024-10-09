@@ -41,9 +41,8 @@ const updatedDate = entry.data.updatedDate
                 <IconLink icon="history" href={`${SOURCE.base}/${source_base}/${entry.id}`} text="History"/>
                 <div class="text-gray-500">
                     {
-                        entry.data.updatedDate != undefined ?
-                                <div>Updated at <span id="update_date">{entry.data.updatedDate.toString()}</span>
-                                </div> : null
+                        entry.data.updatedDate &&
+                            <div>Updated at <span id="update_date">{entry.data.updatedDate.toString()}</span></div>
                     }
                     <div>Published at <span id="publish_date">{entry.data.pubDate.toString()}</span></div>
                 </div>
@@ -52,8 +51,8 @@ const updatedDate = entry.data.updatedDate
         </div>
         <div class="mb-10 max-h-40 max-w-80">
             {
-                entry.data.sideImage != undefined ?
-                        <img class="rounded object-contain" src={entry.data.sideImage} alt=""/> : null
+                entry.data.sideImage &&
+                    <img class="rounded object-contain" src={entry.data.sideImage} alt=""/>
             }
         </div>
     </div>
@@ -62,8 +61,8 @@ const updatedDate = entry.data.updatedDate
         <slot/>
     </article>
     {
-        entry.data.comment == true ?
-                <Giscus config={GISCUS_CONFIG}/> : null
+        entry.data.comment == true &&
+            <Giscus config={GISCUS_CONFIG}/>
     }
 </main>
 <Footer footer={FOOTER}/>
@@ -75,8 +74,8 @@ const updatedDate = entry.data.updatedDate
         const publishDateElement = document.getElementById('publish_date')
         const updateDateElement = document.getElementById('update_date')
 
-        publishDateElement.textContent = pubDate.toDateString()
-        updateDateElement && (updateDateElement.textContent = updatedDate?.toDateString())
+        publishDateElement.textContent = pubDate.toLocaleDateString()
+        updateDateElement && (updateDateElement.textContent = updatedDate?.toLocaleDateString())
     })
 </script>
 
