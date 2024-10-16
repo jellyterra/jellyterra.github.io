@@ -56,8 +56,12 @@ export const HEADER = {
             href: "/blog"
         },
         {
-            title: "Cloud Drive",
-            href: "https://nextcloud.jellyterra.com"
+            title: "Journal",
+            href: "/journal"
+        },
+        {
+            title: "Hosted",
+            href: "/hosted"
         },
         {
             title: "Live Stream",
@@ -197,9 +201,18 @@ export const BLOG_HEADER = {
     ],
 }
 
-export const GISCUS_CONFIG = {
+export const GISCUS_BLOG = {
     repo: "jellyterra/jellyterra.github.io",
     repoId: "R_kgDOLt6GLQ",
-    category: "Announcements",
+    category: "Blog",
     categoryId: "DIC_kwDOLt6GLc4CjJB_",
+    mapping: "og:title"
+}
+
+export const GISCUS_JOURNAL = {
+    repo: "jellyterra/jellyterra.github.io",
+    repoId: "R_kgDOLt6GLQ",
+    category: "Journal",
+    categoryId: "DIC_kwDOLt6GLc4CjJB_",
+    mapping: "og:title"
 }

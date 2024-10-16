@@ -1,0 +1,30 @@
+---
+import Header from '../../components/Header.astro'
+import Footer from '../../components/Footer.astro'
+import {HEADER, FOOTER} from '../../consts'
+import BaseHead from "../../components/BaseHead.astro"
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <BaseHead title="Services Hosted"></BaseHead>
+</head>
+<body class="dark">
+<div class="h-screen flex flex-col justify-between">
+    <div class="sticky top-0">
+        <Header header={HEADER}/>
+    </div>
+    <div class="p-10 flex flex-wrap gap-10 dark content-center justify-center">
+        <a class="card content-center" href="https://gerbera.jellyterra.com">
+            <img src="https://gerbera.io/img/gerbera-logo-white.png" alt="">
+        </a>
+        <a class="card content-center" href="https://nextcloud.jellyterra.com">
+            <img src="https://nextcloud.com/c/uploads/2022/11/logo_nextcloud_white.svg" alt="">
+        </a>
+    </div>
+    <div></div>
+</div>
+<Footer footer={FOOTER}/>
+</body>
+</html>

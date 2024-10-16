@@ -5,6 +5,7 @@ interface Props {
         repoId: string
         category: string
         categoryId: string
+        mapping: string
     }
 }
 
@@ -18,7 +19,7 @@ const {config} = Astro.props
             data-repo-id={config.repoId}
             data-category={config.category}
             data-category-id={config.categoryId}
-            data-mapping="og:title"
+            data-mapping={config.mapping}
             data-strict="0"
             data-reactions-enabled="1"
             data-emit-metadata="0"

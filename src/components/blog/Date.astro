@@ -1,0 +1,20 @@
+---
+interface Props {
+    date: Date
+}
+
+const {date} = Astro.props
+---
+
+<astro-date data-date={date.getTime()}>{date.toUTCString()}</astro-date>
+
+<script>
+    class AstroDate extends HTMLElement {
+        connectedCallback() {
+            console.log(this.dataset.date);
+            this.textContent = new Date(+this.dataset.date!!).toUTCString()
+        }
+    }
+
+    customElements.define('astro-date', AstroDate)
+</script>

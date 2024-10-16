@@ -1,0 +1,78 @@
+---
+import {type CollectionEntry} from 'astro:content'
+
+import BaseHead from '../components/BaseHead.astro';
+import {BLOG_HEADER, FOOTER, GISCUS_BLOG, BG_RANDOM_IMAGE_SRC, SOURCE, GISCUS_JOURNAL} from "../consts";
+import DarkModeButton from "../components/ui/DarkModeButton.astro";
+import Date from "../components/blog/Date.astro";
+
+interface Props {
+    source_base: string
+    entry: CollectionEntry<'journal'>
+}
+
+const {source_base, entry} = Astro.props;
+---
+
+<html lang={entry.data.lang}>
+<head>
+    <base target="_blank"/>
+    <BaseHead title={`${entry.slug}: ${entry.data.title}`} data={entry.data}/>
+</head>
+
+<body class="bg-opacity-0">
+<div class="flex flex-row gap-5">
+    <DarkModeButton/>
+    <article class="flex flex-col gap-2">
+        <Date date={entry.data.pubDate}/>
+        <h2>{entry.data.title}</h2>
+        <slot/>
+    </article>
+</div>
+</body>
+</html>
+
+<style>
+    article {
+        h1 {
+            @apply mt-5 font-bold text-4xl;
+        }
+
+        h2 {
+            @apply font-bold text-2xl;
+        }
+
+        h3 {
+            @apply font-bold text-xl;
+        }
+
+        a {
+            @apply font-bold underline text-purple-800 dark:text-purple-300;
+        }
+
+        blockquote {
+            line-height: 200%;
+
+            @apply rounded-2xl p-10 duration-200 shadow hover:shadow-xl dark:shadow-blue-500 dark:hover:shadow-blue-300 text-gray-800 dark:text-gray-200 bg-gray-300 dark:bg-gray-600;
+        }
+
+        blockquote:before {
+            color: #ccc;
+            content: open-quote;
+            font-size: 4em;
+            line-height: 0.1em;
+            margin-right: 0.25em;
+            vertical-align: -0.4em;
+        }
+
+        p {
+            code {
+                @apply rounded p-1 bg-gray-300 dark:bg-gray-600;
+            }
+        }
+
+        .astro-code {
+            @apply rounded-2xl p-5 duration-200 shadow hover:shadow-xl dark:shadow-blue-500 dark:hover:shadow-blue-300;
+        }
+    }
+</style>
