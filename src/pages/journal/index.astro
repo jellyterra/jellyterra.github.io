@@ -7,6 +7,8 @@ import {getCollection} from 'astro:content'
 import BlogHeader from "../../components/blog/BlogHeader.astro";
 
 const collection = await getCollection('journal')
+
+const bodyStyle = `background-image: url('${BG_RANDOM_IMAGE_SRC || ""}')`
 ---
 
 <html lang="en">
@@ -14,7 +16,7 @@ const collection = await getCollection('journal')
     <BaseHead title="Journal"/>
 </head>
 
-<body class="dark" style={`background-image: url('${BG_RANDOM_IMAGE_SRC || ""}')`}>
+<body class="dark" style={bodyStyle}>
 <div class="sticky top-0">
     <BlogHeader header={BLOG_HEADER}/>
 </div>
@@ -28,3 +30,13 @@ const collection = await getCollection('journal')
 <Footer footer={FOOTER}/>
 </body>
 </html>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        for (const frame of document.body.getElementsByTagName('iframe')) {
+            frame.addEventListener('load', () => {
+                frame.height = `${frame.contentWindow?.document.body.offsetHeight!! + 100}px`
+            })
+        }
+    })
+</script>

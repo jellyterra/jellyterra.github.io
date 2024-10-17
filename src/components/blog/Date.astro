@@ -11,7 +11,6 @@ const {date} = Astro.props
 <script>
     class AstroDate extends HTMLElement {
         connectedCallback() {
-            console.log(this.dataset.date);
             this.textContent = new Date(+this.dataset.date!!).toUTCString()
         }
     }

@@ -9,4 +9,8 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
     site: 'https://jellyterra.com',
     integrations: [mdx(), sitemap(), tailwind()],
+    
+    devToolbar: {
+      enabled: false
+    }
 });
