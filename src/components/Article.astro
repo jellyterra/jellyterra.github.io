@@ -1,0 +1,147 @@
+---
+
+---
+
+<article class="flex flex-col gap-5">
+    <slot/>
+</article>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        for (const article of document.body.getElementsByTagName('article'))
+            for (const quote of article.getElementsByTagName('blockquote'))
+                switch (true) {
+                    case quote.textContent?.startsWith('\n[!TIP]'):
+                        quote.textContent = quote.textContent?.replace('[!TIP]', '') || ''
+                        quote.classList.add('tip')
+                        break
+                    case quote.textContent?.startsWith('\n[!NOTE]'):
+                        quote.textContent = quote.textContent?.replace('[!NOTE]', '') || ''
+                        quote.classList.add('note')
+                        break
+                    case quote.textContent?.startsWith('\n[!WARNING]'):
+                        quote.textContent = quote.textContent?.replace('[!WARNING]', '') || ''
+                        quote.classList.add('warning')
+                        break
+                    case quote.textContent?.startsWith('\n[!IMPORTANT]'):
+                        quote.textContent = quote.textContent?.replace('[!IMPORTANT]', '') || ''
+                        quote.classList.add('important')
+                        break
+                    case quote.textContent?.startsWith('\n[!CAUTION]'):
+                        quote.textContent = quote.textContent?.replace('[!CAUTION]', '') || ''
+                        quote.classList.add('caution')
+                        break
+                    default:
+                        quote.classList.add('quote')
+                }
+    })
+</script>
+
+<style>
+    article {
+        h1 {
+            @apply mt-5 font-bold text-4xl;
+        }
+
+        h2 {
+            @apply font-bold text-2xl;
+        }
+
+        h3 {
+            @apply font-bold text-xl;
+        }
+
+        a {
+            @apply font-bold underline text-purple-800 dark:text-purple-300;
+        }
+
+        li {
+            list-style: disc;
+        }
+
+        blockquote {
+            line-height: 200%;
+
+            @apply rounded-2xl p-5 duration-200 shadow hover:shadow-xl dark:shadow-blue-500 dark:hover:shadow-blue-300 text-gray-800 dark:text-gray-200 bg-gray-300 dark:bg-gray-600;
+        }
+
+        blockquote:before {
+            content: open-quote;
+            font-size: 2em;
+            line-height: 0.1em;
+            margin-right: 0.25em;
+            vertical-align: -0.3em;
+        }
+
+        blockquote.quote {
+            @apply p-10;
+        }
+
+        blockquote.quote:before {
+            font-size: 4em;
+            color: #ccc;
+            content: open-quote;
+            vertical-align: -0.4em;
+        }
+
+        blockquote.tip {
+            @apply shadow-green-300 bg-green-300 dark:bg-green-700;
+        }
+
+        blockquote.tip:before {
+            font-family: 'Material Symbols Outlined', serif;
+
+            content: '\f3e3';
+        }
+
+        blockquote.note {
+            @apply shadow-blue-300 bg-blue-300 dark:bg-blue-700;
+        }
+
+        blockquote.note:before {
+            font-family: 'Material Symbols Outlined', serif;
+
+            content: '\e887';
+        }
+
+        blockquote.warning {
+            @apply shadow-orange-300 bg-orange-300 dark:bg-orange-700;
+        }
+
+        blockquote.warning:before {
+            font-family: 'Material Symbols Outlined', serif;
+
+            content: '\e002';
+        }
+
+        blockquote.important {
+            @apply shadow-purple-300 bg-purple-300 dark:bg-purple-700;
+        }
+
+        blockquote.important:before {
+            font-family: 'Material Symbols Outlined', serif;
+
+            content: '\e645';
+        }
+
+        blockquote.caution {
+            @apply shadow-red-300 bg-red-300 dark:bg-red-700;
+        }
+
+        blockquote.caution:before {
+            font-family: 'Material Symbols Outlined', serif;
+
+            content: '\f654';
+        }
+
+        p {
+            code {
+                @apply rounded p-1 bg-gray-300 dark:bg-gray-600;
+            }
+        }
+
+        .astro-code {
+            @apply rounded-2xl p-5 duration-200 shadow hover:shadow-xl dark:shadow-blue-500 dark:hover:shadow-blue-300;
+        }
+    }
+</style>
