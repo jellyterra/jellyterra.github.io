@@ -28,7 +28,7 @@ const {entry} = Astro.props
         <div class="max-h-32 max-w-48 items-center content-center">
             {
                 entry.data.sideImage &&
-                    <img class="rounded-xl object-contain" src={entry.data.sideImage} alt=""/>
+                    <img class="rounded-xl object-contain" loading="lazy" src={entry.data.sideImage} alt=""/>
             }
         </div>
     </div>

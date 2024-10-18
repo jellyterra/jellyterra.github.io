@@ -55,7 +55,7 @@ const bodyStyle = `background-image: url('${entry.data.backgroundImage || BG_RAN
         <div class="mb-10 max-h-40 max-w-80 content-center">
             {
                 entry.data.sideImage &&
-                    <img class="rounded object-contain" src={entry.data.sideImage} alt=""/>
+                    <img class="rounded object-contain" loading="lazy" src={entry.data.sideImage} alt=""/>
             }
         </div>
     </div>
