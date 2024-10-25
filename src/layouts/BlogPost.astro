@@ -19,6 +19,8 @@ interface Props {
 const {source_base, entry} = Astro.props;
 
 const bodyStyle = `background-image: url('${entry.data.backgroundImage || BG_RANDOM_IMAGE_SRC || ""}')`
+
+const sideImage = entry.data.sideImage?.startsWith('/') || entry.data.sideImage?.startsWith('https://') ? entry.data.sideImage : `${entry.slug}/${entry.data.sideImage}`
 ---
 
 <html lang={entry.data.lang}>
@@ -55,7 +57,7 @@ const bodyStyle = `background-image: url('${entry.data.backgroundImage || BG_RAN
         <div class="mb-10 max-h-40 max-w-80 content-center">
             {
                 entry.data.sideImage &&
-                    <img class="rounded object-contain" loading="lazy" src={entry.data.sideImage} alt=""/>
+                    <img class="rounded object-contain" loading="lazy" src={sideImage} alt=""/>
             }
         </div>
     </div>
