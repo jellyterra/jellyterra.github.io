@@ -1,0 +1,25 @@
+---
+
+---
+
+<div id="ImageLen"
+     class="hidden fixed p-20 top-0 left-0 w-full h-full bg-gray-600 bg-opacity-75 transition-opacity z-10 content-center select-none">
+    <img class="m-auto object-contain" src="" alt="">
+</div>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const len = document.getElementById('ImageLen')!!
+        const lenImage = len.getElementsByTagName('img')[0]
+
+        for (const image of document.body.getElementsByTagName('main')[0].getElementsByTagName('img'))
+            image.addEventListener('click', () => {
+                len.classList.remove('hidden')
+                lenImage.src = image.src
+            })
+
+        len.addEventListener('click', () => {
+            len.classList.add('hidden')
+        })
+    })
+</script>

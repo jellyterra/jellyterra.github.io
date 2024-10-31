@@ -10,6 +10,7 @@ import Giscus from "../components/blog/Giscus.astro";
 import IconLink from "../components/ui/IconLink.astro";
 import Date from "../components/blog/Date.astro";
 import Article from "../components/Article.astro";
+import ImageLen from "../components/ImageLen.astro";
 
 interface Props {
     source_base: string
@@ -71,5 +72,6 @@ const sideImage = entry.data.sideImage?.startsWith('/') || entry.data.sideImage?
     }
 </main>
 <Footer footer={FOOTER}/>
+<ImageLen/>
 </body>
 </html>
