@@ -60,7 +60,7 @@ export const HEADER = {
             href: "/journal"
         },
         {
-            title: "Hosted",
+            title: "Self-Host",
             href: "/hosted"
         },
         {
