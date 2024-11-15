@@ -16,6 +16,8 @@ export const SITE_DESCRIPTION = 'Jelly Terra\'s Website';
 
 export const BG_RANDOM_IMAGE_SRC = 'https://dmoe.cc/random.php'
 
+export const NEXTCLOUD_MAILBOX = 'https://nextcloud.jellyterra.com/s/cmAfZnxTJqcEdrq'
+
 export const ANALYTICS = {
     host: 'https://analytics.jellyterra.com',
     deployTime: formatTime(new Date(Date.now()))
@@ -102,16 +104,16 @@ export const FOOTER = {
             href: "https://www.youtube.com/@jellyterra",
         },
         {
+            icon: "nextcloud",
+            href: NEXTCLOUD_MAILBOX,
+        },
+        {
             icon: "bilibili",
             href: "https://space.bilibili.com/443340304",
         },
         {
             icon: "spotify",
             href: "https://open.spotify.com/user/t7l8rdnzrcne9lcgnp97hlk4b",
-        },
-        {
-            icon: "neteasecloudmusic",
-            href: "https://music.163.com/#/user/home?id=2126631080",
         },
         {
             icon: "maildotru",

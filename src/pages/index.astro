@@ -1,7 +1,7 @@
 ---
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
-import {HEADER, FOOTER, PROMPT_ATTR} from '../consts'
+import {HEADER, FOOTER, PROMPT_ATTR, NEXTCLOUD_MAILBOX} from '../consts'
 import BaseHead from "../components/BaseHead.astro"
 import PromptStyleText from "../components/PromptStyleText.astro";
 import LinkButton from "../components/ui/LinkButton.astro";
@@ -53,6 +53,9 @@ import {Content as More} from "../content/intro/more.md"
     <section class="normal">
         <div>
             <Bookshelf/>
+            <div class="mt-10 flex flex-wrap gap-5">
+                <LinkButton href={NEXTCLOUD_MAILBOX} title="Send me some e-books or papers."/>
+            </div>
         </div>
         <div>
             <BookList/>
@@ -86,7 +89,7 @@ import {Content as More} from "../content/intro/more.md"
 <div class="content-center text-center" style="height: 60vh">
     <div class="m-auto flex flex-col gap-20">
         <h1>踏雪留痕，寻梅采香</h1>
-        <LinkButton href="https://github.com/jellyterra" title="CHECK MORE ON MY GITHUB"/>
+        <LinkButton href={NEXTCLOUD_MAILBOX} title="SEND ME YOUR WORDS"/>
     </div>
 </div>
 <Footer footer={FOOTER}/>
@@ -117,7 +120,7 @@ import {Content as More} from "../content/intro/more.md"
             @apply list-disc;
         }
 
-        a {
+        p a {
             @apply font-bold underline underline-offset-2;
         }
     }
