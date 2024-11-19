@@ -1,0 +1,66 @@
+---
+import Header from '../../components/Header.astro'
+import Footer from '../../components/Footer.astro'
+import {HEADER, FOOTER, BG_RANDOM_IMAGE_SRC} from '../../consts'
+import BaseHead from "../../components/BaseHead.astro"
+
+const bodyStyle = `background-image: url('${BG_RANDOM_IMAGE_SRC || ""}')`
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <BaseHead title="Crafting"/>
+</head>
+<body class="dark" style={bodyStyle}>
+<div class="h-screen flex flex-col bg-opacity bg-light dark:bg-dark">
+    <div class="sticky top-0">
+        <Header header={HEADER}/>
+    </div>
+    <div class="p-10 flex flex-col gap-10">
+        <h1>Utilities</h1>
+        <div class="flex flex-wrap gap-5">
+            <a class="card content center" target="_blank" href="https://github.com/jellyterra/rtmp-pioneer">
+                <h2>RTMP Pioneer</h2>
+                <p>
+                    Streaming relay for RTMP.<br/>
+                    Accepts the streams from clients and forwards to multiple endpoints.<br/>
+                    Setting by route or profile. Auto-expire outdated recordings.
+                </p>
+            </a>
+            <a class="card content center" target="_blank" href="https://github.com/jellyterra/cloudflare-ddns">
+                <h2>Cloudflare DDNS</h2>
+                <p>
+                    Update DNS records on NETLINK event.<br/>
+                    Filtering addresses of specified interfaces by patterns.<br/>
+                    Tag the host to support multiple machines binding with single domain.
+                </p>
+            </a>
+        </div>
+        <h1>PCB Applications</h1>
+        <div class="flex flex-wrap gap-5">
+            <a class="card content-center" target="_blank" href="https://github.com/jetera-creative/usb-hub-ch334-x16">
+                <h2>USB 2.0 Hub x16</h2>
+                <p>Integrated five CH334R. Various layouts.</p>
+            </a>
+        </div>
+    </div>
+    <div></div>
+</div>
+<Footer footer={FOOTER}/>
+</body>
+</html>
+
+<style>
+    h1 {
+        @apply font-bold text-4xl;
+    }
+
+    h2 {
+        @apply font-bold text-2xl;
+    }
+
+    h3 {
+        @apply font-bold text-xl;
+    }
+</style>

@@ -62,6 +62,10 @@ export const HEADER = {
             href: "/journal"
         },
         {
+            title: "Crafting",
+            href: "/crafting"
+        },
+        {
             title: "Self-Host",
             href: "/hosted"
         },
