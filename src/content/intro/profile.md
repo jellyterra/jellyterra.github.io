@@ -8,9 +8,7 @@ Boy born in 2006.
 
 ⚛ STM32, ESP32, FPGA
 
-⌨️ Fedora/KDE user since 2020.
-
-💻 I started using Linux in 2016.
+⌨️ NixOS/KDE, Linux user since 2016.
 
 🎮 Minecraft, WebLiero
 
@@ -20,15 +18,11 @@ Boy born in 2006.
 
 I am learning and working on:
 
-*   Compilers and program analysis
-
-*   Digital hardware design
-
-*   DIY circuit boards and applications with KiCad
-
-*   Infrastructure
-
-*   Productivity and automation tools
+* Compilers and program analysis
+* Digital hardware design
+* DIY circuit boards and applications with KiCad
+* Infrastructure
+* Productivity and automation tools
 
 I have mainly focused on learning hardware architecture and PL theory since 2023.
 

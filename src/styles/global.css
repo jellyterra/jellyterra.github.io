@@ -22,3 +22,8 @@ body {
 .card {
     @apply p-10 rounded-2xl bg-opacity-80 dark:bg-opacity-80 bg-light dark:bg-dark duration-200 shadow hover:shadow-xl dark:shadow-blue-500 dark:hover:shadow-blue-300;
 }
+
+li {
+    list-style: disc;
+    margin-left: 20px;
+}

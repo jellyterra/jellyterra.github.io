@@ -57,8 +57,10 @@ const sideImage = entry.data.sideImage?.startsWith('/') || entry.data.sideImage?
         </div>
         <div class="mb-10 max-h-40 max-w-80 content-center">
             {
-                entry.data.sideImage &&
-                    <img class="rounded object-contain" loading="lazy" src={sideImage} alt=""/>
+                entry.data.sideImage && entry.data.sideImage.endsWith("svg") ?
+                        <img class="rounded-xl object-contain" loading="lazy" width="200" height="200" src={sideImage}
+                             alt=""/> :
+                        <img class="rounded-xl object-contain" loading="lazy" src={sideImage} alt=""/>
             }
         </div>
     </div>
