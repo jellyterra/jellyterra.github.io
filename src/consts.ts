@@ -16,7 +16,7 @@ export const SITE_DESCRIPTION = 'Jelly Terra\'s Website';
 
 export const BG_RANDOM_IMAGE_SRC = 'https://dmoe.cc/random.php'
 
-export const NEXTCLOUD_MAILBOX = 'https://nextcloud.jellyterra.com/s/cmAfZnxTJqcEdrq'
+export const NEXTCLOUD_MAILBOX = 'https://get.jellyterra.com/url/p/nextcloud/mailbox'
 
 export const ANALYTICS = {
     host: 'https://analytics.jellyterra.com',
