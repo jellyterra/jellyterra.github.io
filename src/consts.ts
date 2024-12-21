@@ -211,7 +211,7 @@ export const GISCUS_BLOG = {
     repo: "jellyterra/jellyterra.github.io",
     repoId: "R_kgDOLt6GLQ",
     category: "Blog",
-    categoryId: "DIC_kwDOLt6GLc4CjJB_",
+    categoryId: "DIC_kwDOLt6GLc4CjYto",
     mapping: "og:title"
 }
 
@@ -219,6 +219,6 @@ export const GISCUS_JOURNAL = {
     repo: "jellyterra/jellyterra.github.io",
     repoId: "R_kgDOLt6GLQ",
     category: "Journal",
-    categoryId: "DIC_kwDOLt6GLc4CjJB_",
+    categoryId: "DIC_kwDOLt6GLc4CjYtn",
     mapping: "og:title"
 }
