@@ -1,5 +1,5 @@
 ---
-import BlogEntry from "./BlogEntry.astro";
+import PostEntry from "./PostEntry.astro";
 
 const {collection} = Astro.props
 ---
@@ -7,7 +7,7 @@ const {collection} = Astro.props
 <div class="flex flex-col gap-5 min-h-screen">
     {
         collection.reverse().map((entry: any) => (
-                <BlogEntry entry={entry}/>
+                <PostEntry entry={entry}/>
         ))
     }
 </div>

@@ -4,7 +4,7 @@
 
 <script>
     function update() {
-        const elements = document.getElementsByClassName('dark-mode-button')
+        const elements = document.getElementsByClassName('DarkMode-Toggle')
 
         switch (localStorage.getItem('dark')) {
             case '1':
@@ -45,7 +45,7 @@
         update()
     }
 
-    document.querySelectorAll('.dark-mode-button').forEach((element) => {
+    document.querySelectorAll('.DarkMode-Toggle').forEach((element) => {
         element.addEventListener('click', toggleDarkMode)
     })
 

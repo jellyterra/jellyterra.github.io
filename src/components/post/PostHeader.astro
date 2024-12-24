@@ -1,0 +1,56 @@
+---
+import DarkModeButton from "../ui/DarkModeButton.astro"
+import IconDropdown from "../ui/IconDropdown.astro";
+import Article from "../Article.astro";
+import {SITE_HOST} from "../../consts";
+import PostTracker from "./PostTracker.astro";
+
+interface Props {
+    header: {
+        logo: {
+            src: string
+            width: number
+            height: number
+        },
+        nav: {
+            title: string
+            href: string
+        }[]
+    }
+    prefix: string,
+}
+
+const {header, prefix} = Astro.props
+---
+
+<header class="m-0 pt-2 pb-2 pl-20 pr-20 flex flex-wrap justify-between items-center bg-opacity shadow-xl bg-light dark:bg-[#2a2a2e] dark:text-white">
+    <div><a href="/"><img src={header.logo.src} width={header.logo.width} height={header.logo.height} alt=""></a></div>
+
+    <div class="flex flex-wrap gap-2">
+        <nav class="mr-20 flex flex-wrap items-center gap-10">
+            {
+                header.nav.map((link: any) =>
+                        <a class="select-none duration-200 font-bold hover:text-gray-500" target="_blank"
+                           href={link.href}>{link.title}</a>
+                )
+            }
+        </nav>
+        <DarkModeButton/>
+        <IconDropdown class="w-[30vw]" style="right:0" icon="update">
+            <div class="p-4 flex flex-col gap-4">
+                <Article>
+                    <h3><span class="material-symbols-outlined">update</span><span>Post Update Tracker</span></h3>
+                </Article>
+                <PostTracker prefix={prefix}/>
+            </div>
+        </IconDropdown>
+        <IconDropdown class="w-max" style="right:0" icon="rss_feed">
+            <div class="p-4">
+                <Article>
+                    <h3><span class="material-symbols-outlined">rss_feed</span><span>RSS Feed</span></h3>
+                    <code class="astro-code">{SITE_HOST}/{prefix}/rss.xml</code>
+                </Article>
+            </div>
+        </IconDropdown>
+    </div>
+</header>

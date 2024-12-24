@@ -1,0 +1,59 @@
+---
+import TextButton from "../ui/TextButton.astro";
+
+interface Props {
+    prefix: string
+}
+
+const {prefix} = Astro.props
+---
+
+<div class="flex flex-col gap-5">
+    <p id="PostTracker:LastUpdateTime"></p>
+    <div class="flex">
+        <TextButton id="PostTracker:Refresh" text="Refresh"/>
+        <TextButton id="PostTracker:Update" text="Update"/>
+    </div>
+    <div class="flex flex-col gap-5">
+        <div id="PostTracker:List">
+        </div>
+    </div>
+</div>
+
+<script define:vars={{prefix}}>
+    function refresh() {
+        const entries = JSON.parse(localStorage[`PostTracker:${prefix}`] || '[]')
+
+        const widget = document.getElementById(`PostTracker:List`)
+        widget.innerHTML = ''
+
+        for (const entry of entries) {
+            const tracker = JSON.parse(localStorage[`PostTracker:${entry.prefix}:${entry.slug}`] || '{}')
+            if (tracker.latestUpdate && Date.parse(entry.latestUpdate) > Date.parse(tracker.latestUpdate)) {
+                widget.innerHTML += `<h3><b>${tracker.title}</b></h3>${new Date(Date.parse(tracker.latestUpdate)).toLocaleString()}`
+            }
+        }
+
+        if (widget.innerHTML.length === 0) widget.innerHTML = "<p>No update in the posts you've read.</p>"
+
+        document.getElementById('PostTracker:LastUpdateTime').textContent = `Last update: ${localStorage.getItem(`PostTracker:LastUpdateTime:${prefix}`)}`
+    }
+
+    function update() {
+        fetch(`/${prefix}/posts.json`).then(res => res.text().then(text => localStorage.setItem(`PostTracker:${prefix}`, text))).then(() => {
+            localStorage.setItem(`PostTracker:LastUpdateTime:${prefix}`, new Date(Date.now()).toISOString())
+            refresh()
+        })
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        document.getElementById('PostTracker:Refresh').addEventListener('click', refresh)
+        document.getElementById('PostTracker:Update').addEventListener('click', update)
+
+        const lastUpdateTime = new Date(Date.parse(localStorage.getItem(`PostTracker:LastUpdateTime:${prefix}`) || '0'))
+        const outdated = new Date(lastUpdateTime)
+        outdated.setDate(outdated.getDate() + 1)
+
+        Date.now() > outdated ? update() : refresh()
+    })
+</script>

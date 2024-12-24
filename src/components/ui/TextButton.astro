@@ -1,7 +1,12 @@
 ---
+interface Props {
+    text: string
 
+    [key: string]: any
+}
+
+const {text, ...rest} = Astro.props
 ---
 
-<div class="select-none rounded-l-full rounded-r-full pt-2 pb-2 pl-5 pr-5 duration-200 font-bold bg-[#ccc] hover:bg-[#ddd] dark:bg-[#2a2a2e] dark:hover:bg-black">
-    <slot/>
-</div>
+<div class:list={['cursor-pointer select-none w-min m-2 p-1 pl-2 pr-2 border-2 border-solid rounded-xl duration-200 border-blue-500 text-blue-500 font-bold hover:bg-blue-500 hover:text-white', rest['class']]}
+     {...rest}>{text}</div>

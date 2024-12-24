@@ -11,6 +11,7 @@ function formatTime(date: Date) {
     return +`${year}${month}${day}${hour}${minute}${second}`
 }
 
+export const SITE_HOST = 'https://jellyterra.com'
 export const SITE_TITLE = 'Jelly Terra';
 export const SITE_DESCRIPTION = 'Jelly Terra\'s Website';
 

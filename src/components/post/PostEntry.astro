@@ -4,7 +4,7 @@ import TagShowcase from "./TagShowcase.astro";
 import Date from "./Date.astro";
 
 interface Props {
-    entry: CollectionEntry<'blog'>
+    entry: any
 }
 
 const {entry} = Astro.props
@@ -20,9 +20,9 @@ const sideImage = entry.data.sideImage?.startsWith('/') || entry.data.sideImage?
             <div class="flex flex-wrap gap-1 text-gray-500 dark:text-gray-400">
                 <Date date={entry.data.pubDate}/>
                 {
-                    entry.data.updatedDate &&
+                    entry.data.updateDate &&
                         <div>=></div>
-                        <Date date={entry.data.updatedDate}/>
+                        <Date date={entry.data.updateDate}/>
                 }
             </div>
             <TagShowcase tags={entry.data.tags}/>

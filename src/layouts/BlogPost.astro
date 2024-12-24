@@ -4,11 +4,11 @@ import {type CollectionEntry} from 'astro:content'
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import {BLOG_HEADER, FOOTER, GISCUS_BLOG, BG_RANDOM_IMAGE_SRC, SOURCE} from "../consts";
-import BlogHeader from "../components/blog/BlogHeader.astro";
-import TagShowcase from "../components/blog/TagShowcase.astro";
-import Giscus from "../components/blog/Giscus.astro";
+import PostHeader from "../components/post/PostHeader.astro";
+import TagShowcase from "../components/post/TagShowcase.astro";
+import Giscus from "../components/post/Giscus.astro";
 import IconLink from "../components/ui/IconLink.astro";
-import Date from "../components/blog/Date.astro";
+import Date from "../components/post/Date.astro";
 import Article from "../components/Article.astro";
 import ImageLen from "../components/ImageLen.astro";
 
@@ -32,7 +32,7 @@ const sideImage = entry.data.sideImage?.startsWith('/') || entry.data.sideImage?
 
 <body class="dark" style={bodyStyle}>
 <div class="sticky top-0">
-    <BlogHeader header={BLOG_HEADER}/>
+    <PostHeader header={BLOG_HEADER} prefix="blog"/>
 </div>
 <main class="min-h-screen p-5 lg:p-20 flex flex-col gap-10 bg-opacity bg-light dark:bg-dark">
     <div class="flex flex-wrap gap-5 justify-between">
@@ -43,9 +43,9 @@ const sideImage = entry.data.sideImage?.startsWith('/') || entry.data.sideImage?
                 <IconLink icon="history" href={`${SOURCE.base}/${source_base}/${entry.id}`} text="History"/>
                 <div class="text-gray-500">
                     {
-                        entry.data.updatedDate &&
+                        entry.data.updateDate &&
                             <div>Updated at
-                                <Date date={entry.data.updatedDate}/>
+                                <Date date={entry.data.updateDate}/>
                             </div>
                     }
                     <div>Published at
@@ -77,3 +77,10 @@ const sideImage = entry.data.sideImage?.startsWith('/') || entry.data.sideImage?
 <ImageLen/>
 </body>
 </html>
+
+<script define:vars={{entry}}>
+    localStorage.setItem(`PostTracker:blog:${entry.slug}`, JSON.stringify({
+        title: entry.data.title,
+        latestUpdate: entry.data.updateDate || entry.data.pubDate
+    }));
+</script>

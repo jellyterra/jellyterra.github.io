@@ -8,7 +8,7 @@
 
 <script>
     window.addEventListener('DOMContentLoaded', () => {
-        for (const article of document.body.getElementsByTagName('article'))
+        for (const article of document.body.getElementsByTagName('article')) {
             for (const quote of article.getElementsByTagName('blockquote'))
                 switch (true) {
                     case quote.textContent?.startsWith('\n[!TIP]'):
@@ -34,21 +34,52 @@
                     default:
                         quote.classList.add('quote')
                 }
+
+            for (const e of article.getElementsByClassName('astro-code')) {
+                const code = e as HTMLElement
+                code.addEventListener('click', () => {
+                    const selection = window.getSelection();
+                    if (selection && selection.toString().length > 0) return
+
+                    code.classList.add('invert')
+                    setTimeout(() => code.classList.remove('invert'), 200);
+
+                    let textArea = document.createElement("textarea");
+                    textArea.value = code.textContent!;
+
+                    textArea.style.top = "0";
+                    textArea.style.left = "0";
+                    textArea.style.position = "fixed";
+
+                    document.body.appendChild(textArea);
+                    textArea.focus();
+                    textArea.select();
+
+                    try {
+                        document.execCommand('copy')
+                    } catch (err) {
+                        navigator.clipboard.writeText(code.textContent!)
+                    }
+
+                    document.body.removeChild(textArea);
+                })
+            }
+        }
     })
 </script>
 
 <style>
     article {
         h1 {
-            @apply mt-5 font-bold text-4xl;
+            @apply mt-5 flex gap-1 font-bold text-4xl items-center;
         }
 
         h2 {
-            @apply font-bold text-2xl;
+            @apply flex gap-1 font-bold text-2xl items-center;
         }
 
         h3 {
-            @apply font-bold text-xl;
+            @apply flex gap-1 font-bold text-xl items-center;
         }
 
         a {

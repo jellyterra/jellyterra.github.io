@@ -1,0 +1,43 @@
+---
+interface Props {
+    icon: string
+
+    [key: string]: any
+}
+
+const {icon, ...rest} = Astro.props
+---
+
+<div class="dropdown">
+    <span class="dropdown-button select-none rounded-full p-[10px] duration-200 material-symbols-outlined">{icon}</span>
+    <div class:list={['dropdown-content rounded-2xl shadow-xl dark:shadow-blue-300 bg-light dark:bg-dark', rest['class']]}
+         {...rest}>
+        <slot/>
+    </div>
+</div>
+
+<style>
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-button:hover {
+        background-color: rgba(128, 128, 128, 0.5);
+    }
+
+    .dropdown-content {
+        position: absolute;
+        visibility: hidden;
+
+        padding: 10px;
+
+        opacity: 0;
+        transition-duration: 200ms;
+    }
+
+    .dropdown:hover .dropdown-content {
+        visibility: visible;
+        opacity: 1;
+    }
+</style>

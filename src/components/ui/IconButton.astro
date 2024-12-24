@@ -1,7 +1,18 @@
 ---
+interface Props {
+    icon: string
 
+    [key: string]: any
+}
+
+const {icon, ...rest} = Astro.props
 ---
 
-<div class="select-none pt-2.5 duration-200 hover:text-gray-500">
-    <slot/>
-</div>
+<span class:list={['button select-none rounded-full p-[10px] duration-200 material-symbols-outlined', rest['class']]}
+      {...rest}>{icon}</span>
+
+<style>
+    .button:hover {
+        background-color: rgba(128, 128, 128, 0.5);
+    }
+</style>
