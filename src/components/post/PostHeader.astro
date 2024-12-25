@@ -17,7 +17,7 @@ interface Props {
             href: string
         }[]
     }
-    prefix: string,
+    prefix?: string,
 }
 
 const {header, prefix} = Astro.props
@@ -41,7 +41,8 @@ const {header, prefix} = Astro.props
                 <Article>
                     <h3><span class="material-symbols-outlined">update</span><span>Post Update Tracker</span></h3>
                 </Article>
-                <PostTracker prefix={prefix}/>
+                {prefix ?
+                        <PostTracker prefix={prefix}/> : 'Not available.'}
             </div>
         </IconDropdown>
         <IconDropdown class="w-max" style="right:0" icon="rss_feed">

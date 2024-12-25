@@ -9,10 +9,10 @@ const {prefix} = Astro.props
 ---
 
 <div class="flex flex-col gap-5">
-    <p id="PostTracker:LastUpdateTime"></p>
-    <div class="flex">
-        <TextButton id="PostTracker:Refresh" text="Refresh"/>
+    <p id="PostTracker:Statistics"></p>
+    <div class="flex gap-555 items-center">
         <TextButton id="PostTracker:Update" text="Update"/>
+        <p id="PostTracker:LastUpdateTime"></p>
     </div>
     <div class="flex flex-col gap-5">
         <div id="PostTracker:List">
@@ -27,15 +27,20 @@ const {prefix} = Astro.props
         const widget = document.getElementById(`PostTracker:List`)
         widget.innerHTML = ''
 
+        let updatesCount = 0
         for (const entry of entries) {
             const tracker = JSON.parse(localStorage[`PostTracker:${entry.prefix}:${entry.slug}`] || '{}')
-            if (tracker.latestUpdate && Date.parse(entry.latestUpdate) > Date.parse(tracker.latestUpdate)) {
-                widget.innerHTML += `<h3><b>${tracker.title}</b></h3>${new Date(Date.parse(tracker.latestUpdate)).toLocaleString()}`
+            if (tracker.latestUpdate && entry.latestUpdate !== tracker.latestUpdate) {
+                widget.innerHTML += `<h3><b>${tracker.title}</b></h3>${new Date(Date.parse(tracker.latestUpdate)).toLocaleString()} => <b>${new Date(Date.parse(entry.latestUpdate)).toLocaleString()}</b>`
+                updatesCount++
             }
         }
 
+        let monitorCount = 0
+        for (const k in localStorage) k.startsWith(`PostTracker:${prefix}:`) ? monitorCount++ : 0
         if (widget.innerHTML.length === 0) widget.innerHTML = "<p>No update in the posts you've read.</p>"
 
+        document.getElementById(`PostTracker:Statistics`).innerHTML = `<b>${updatesCount}</b> post updates in <b>${monitorCount}</b> that been read. <b>${entries.length}</b> posts in total.`
         document.getElementById('PostTracker:LastUpdateTime').textContent = `Last update: ${localStorage.getItem(`PostTracker:LastUpdateTime:${prefix}`)}`
     }
 
@@ -47,7 +52,6 @@ const {prefix} = Astro.props
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-        document.getElementById('PostTracker:Refresh').addEventListener('click', refresh)
         document.getElementById('PostTracker:Update').addEventListener('click', update)
 
         const lastUpdateTime = new Date(Date.parse(localStorage.getItem(`PostTracker:LastUpdateTime:${prefix}`) || '0'))
