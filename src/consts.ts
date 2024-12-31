@@ -12,6 +12,7 @@ function formatTime(date: Date) {
 }
 
 export const SITE_HOST = 'https://jellyterra.com'
+export const SITE_HOSTNAME = 'jellyterra.com'
 export const SITE_TITLE = 'Jelly Terra';
 export const SITE_DESCRIPTION = 'Jelly Terra\'s Website';
 

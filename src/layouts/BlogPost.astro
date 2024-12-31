@@ -11,6 +11,7 @@ import IconLink from "../components/ui/IconLink.astro";
 import Date from "../components/post/Date.astro";
 import Article from "../components/Article.astro";
 import ImageLen from "../components/ImageLen.astro";
+import ViewStatistics from "../components/post/ViewStatistics.astro";
 
 interface Props {
     source_base: string
@@ -54,6 +55,7 @@ const sideImage = entry.data.sideImage?.startsWith('/') || entry.data.sideImage?
                 </div>
             </div>
             <TagShowcase tags={entry.data.tags}></TagShowcase>
+            <ViewStatistics path={`/blog/${entry.slug}`}/>
         </div>
         <div class="mb-10 max-h-40 max-w-80 content-center">
             {

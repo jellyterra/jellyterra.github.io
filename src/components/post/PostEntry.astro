@@ -1,18 +1,19 @@
 ---
-import {type CollectionEntry} from 'astro:content';
 import TagShowcase from "./TagShowcase.astro";
 import Date from "./Date.astro";
+import ViewStatistics from "./ViewStatistics.astro";
 
 interface Props {
     entry: any
+    prefix: string
 }
 
-const {entry} = Astro.props
+const {entry, prefix} = Astro.props
 
 const sideImage = entry.data.sideImage?.startsWith('/') || entry.data.sideImage?.startsWith('https://') ? entry.data.sideImage : `/blog/${entry.slug}/${entry.data.sideImage}`
 ---
 
-<a class="card flex flex-col gap-2" href={`/blog/${entry.slug}`}>
+<a class="card flex flex-col gap-2" href={`/${prefix}/${entry.slug}`}>
     <div class="flex flex-wrap gap-5 justify-between">
         <div class="flex flex-col gap-2">
             <h1 class="font-bold text-xl">{entry.data.title}</h1>
@@ -26,6 +27,7 @@ const sideImage = entry.data.sideImage?.startsWith('/') || entry.data.sideImage?
                 }
             </div>
             <TagShowcase tags={entry.data.tags}/>
+            <ViewStatistics path={`/${prefix}/${entry.slug}`}/>
         </div>
         <div class="max-h-32 max-w-48 items-center content-center">
             {

@@ -1,0 +1,28 @@
+---
+import {ANALYTICS, SITE_HOSTNAME} from "../../consts";
+interface Props {
+    path: string
+}
+
+const {path} = Astro.props
+---
+
+<div class="flex gap-2 items-center text-gray-500">
+    <span class="material-symbols-outlined">visibility</span><span id={`${path}-Views`}></span>
+    <span class="material-symbols-outlined">public</span><span id={`${path}-Addrs`}></span>
+    <span class="material-symbols-outlined">group</span><span id={`${path}-Visitors`}></span>
+</div>
+
+<script define:vars={{ANALYTICS, SITE_HOSTNAME, path}}>
+    const target = encodeURIComponent(`${SITE_HOSTNAME}:${path}`)
+
+    fetch(`${ANALYTICS.host}/api/v1/getAccessCountOfTarget?target=${target}`).then(resp => resp.text().then(text => {
+        document.getElementById(`${path}-Views`).textContent = text;
+    }))
+    fetch(`${ANALYTICS.host}/api/v1/getAddrCountOfTarget?target=${target}`).then(resp => resp.text().then(text => {
+        document.getElementById(`${path}-Addrs`).textContent = text;
+    }))
+    fetch(`${ANALYTICS.host}/api/v1/getUuidCountOfTarget?target=${target}`).then(resp => resp.text().then(text => {
+        document.getElementById(`${path}-Visitors`).textContent = text;
+    }))
+</script>

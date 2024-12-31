@@ -19,7 +19,8 @@ const {analytics} = Astro.props;
     const uuid = localStorage.getItem('uuid')
 
     function report() {
-        fetch(`${analytics.host}/api/v1/reportAccess?deploy_time=${analytics.deployTime}&uuid=${uuid}&target=${encodeURIComponent(location.href)}&user_agent=${encodeURIComponent(navigator.userAgent)}`).then(() => {})
+        fetch(`${analytics.host}/api/v1/reportAccess?deploy_time=${analytics.deployTime}&uuid=${uuid}&target=${encodeURIComponent(`${location.host}:${location.pathname}`)}&user_agent=${encodeURIComponent(navigator.userAgent)}&time=${Date.now()}`).then(() => {
+        })
     }
 
     if (uuid !== '0') report()
