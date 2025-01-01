@@ -12,6 +12,7 @@ import Date from "../components/post/Date.astro";
 import Article from "../components/Article.astro";
 import ImageLen from "../components/ImageLen.astro";
 import ViewStatistics from "../components/post/ViewStatistics.astro";
+import IconButton from "../components/ui/IconButton.astro";
 
 interface Props {
     source_base: string
@@ -25,7 +26,7 @@ const bodyStyle = `background-image: url('${entry.data.backgroundImage || BG_RAN
 const sideImage = entry.data.sideImage?.startsWith('/') || entry.data.sideImage?.startsWith('https://') ? entry.data.sideImage : `/blog/${entry.slug}/${entry.data.sideImage}`
 ---
 
-<html lang={entry.data.lang}>
+<html class="scroll-smooth" lang={entry.data.lang}>
 <head>
     <base target="_blank"/>
     <BaseHead title={entry.data.title} data={entry.data}/>
@@ -33,7 +34,13 @@ const sideImage = entry.data.sideImage?.startsWith('/') || entry.data.sideImage?
 
 <body class="dark" style={bodyStyle}>
 <div class="sticky top-0">
-    <PostHeader header={BLOG_HEADER} prefix="blog"/>
+    <PostHeader header={BLOG_HEADER} prefix="blog">
+        <IconButton id="ToggleList" class="ml-10" icon="format_list_bulleted"/>
+    </PostHeader>
+    <div id="Titles"
+         class="hidden fixed h-screen overflow-y-scroll p-10 right-0 flex-col gap-2 rounded-l-2xl duration-200 shadow-2xl bg-opacity-90 dark:bg-opacity-80 bg-light dark:bg-dark">
+        <a target="_self" href="#" class="font-bold">{entry.data.title}</a>
+    </div>
 </div>
 <main class="min-h-screen p-5 lg:p-20 flex flex-col gap-10 bg-opacity bg-light dark:bg-dark">
     <div class="flex flex-wrap gap-5 justify-between">
@@ -80,9 +87,47 @@ const sideImage = entry.data.sideImage?.startsWith('/') || entry.data.sideImage?
 </body>
 </html>
 
+<style>
+    #Titles {
+        scrollbar-width: thin;
+    }
+</style>
+
 <script define:vars={{entry}}>
     localStorage.setItem(`PostTracker:blog:${entry.slug}`, JSON.stringify({
         title: entry.data.title,
         latestUpdate: entry.data.updateDate || entry.data.pubDate
     }));
+    document.addEventListener('DOMContentLoaded', () => {
+        const titles = document.getElementsByTagName('main')[0].querySelectorAll('h1,h2')
+        const titleList = document.getElementById('Titles')
+
+        document.getElementById('ToggleList').addEventListener('mouseover', () => {
+            titleList.classList.toggle('flex')
+            titleList.classList.toggle('hidden')
+        })
+
+        for (const title of titles) {
+            title.id = title.textContent
+
+            let classText = ''
+            switch (title.tagName) {
+                case 'H1':
+                    classText = 'pl-2'
+                    break
+                case 'H2':
+                    classText = 'pl-6'
+                    break
+            }
+            titleList.innerHTML += `<a target="_self" id="${title.id}-a" href="#${title.id}" class="${classText}">${title.textContent}</a>`
+        }
+
+        document.addEventListener('scroll', () => {
+            for (const title of titles) document.getElementById(`${title.id}-a`).classList.remove('font-extrabold', 'border-l-2', 'border-black', 'dark:border-white')
+            for (const title of titles) if (title.getClientRects()[0].top > -1) {
+                document.getElementById(`${title.id}-a`).classList.add('font-extrabold', 'border-l-2', 'border-black', 'dark:border-white')
+                return
+            }
+        })
+    })
 </script>

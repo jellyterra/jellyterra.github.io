@@ -5,6 +5,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Date from "../components/post/Date.astro";
 import DarkMode from '../components/ui/DarkMode.astro';
 import Article from "../components/Article.astro";
+import ViewStatistics from "../components/post/ViewStatistics.astro";
 
 interface Props {
     source_base: string
@@ -24,6 +25,7 @@ const {source_base, entry} = Astro.props;
 <div class="flex flex-row gap-5">
     <DarkMode/>
     <Article>
+        <ViewStatistics path={`/journal/${entry.slug}`}/>
         <Date date={entry.data.pubDate}/>
         <h2>{entry.data.title}</h2>
         <slot/>

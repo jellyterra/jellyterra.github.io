@@ -14,7 +14,7 @@ const sideImage = entry.data.sideImage?.startsWith('/') || entry.data.sideImage?
 ---
 
 <a class="card flex flex-col gap-2" href={`/${prefix}/${entry.slug}`}>
-    <div class="flex flex-wrap gap-5 justify-between">
+    <div class="flex flex-wrap gap-5 items-center justify-between">
         <div class="flex flex-col gap-2">
             <h1 class="font-bold text-xl">{entry.data.title}</h1>
             <div>{entry.data.description}</div>

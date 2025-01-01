@@ -214,7 +214,7 @@ export const GISCUS_BLOG = {
     repoId: "R_kgDOLt6GLQ",
     category: "Blog",
     categoryId: "DIC_kwDOLt6GLc4CjYto",
-    mapping: "og:title"
+    mapping: "pathname"
 }
 
 export const GISCUS_JOURNAL = {
@@ -222,5 +222,5 @@ export const GISCUS_JOURNAL = {
     repoId: "R_kgDOLt6GLQ",
     category: "Journal",
     categoryId: "DIC_kwDOLt6GLc4CjYtn",
-    mapping: "og:title"
+    mapping: "pathname"
 }
