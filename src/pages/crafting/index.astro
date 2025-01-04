@@ -13,7 +13,7 @@ const bodyStyle = `background-image: url('${BG_RANDOM_IMAGE_SRC || ""}')`
     <BaseHead title="Crafting"/>
 </head>
 <body class="dark" style={bodyStyle}>
-<div class="h-screen flex flex-col bg-opacity bg-light dark:bg-dark dark:bg-opacity-50">
+<div class="min-h-screen flex flex-col bg-opacity bg-light dark:bg-dark dark:bg-opacity-50">
     <div class="sticky top-0">
         <Header header={HEADER}/>
     </div>
@@ -43,16 +43,33 @@ const bodyStyle = `background-image: url('${BG_RANDOM_IMAGE_SRC || ""}')`
                     More simple sandbox environment than Flatpak.
                 </p>
             </a>
-            <a class="card content center" target="_blank" href="https://github.com/dashanalytics">
-                <h2>Dashanalytics</h2>
-                <p>The web access reporting analytics kit in use.</p>
+            <a class="card content center" target="_blank" href="https://github.com/jellyterra/fs-dedup">
+                <h2>fs-dedup</h2>
+                <p>
+                    Filesystem deduplication utility.
+                </p>
             </a>
         </div>
-        <h1>PCB Applications</h1>
+        <h1>Projects</h1>
+        <div class="flex flex-wrap gap-5">
+            <a class="card content center" target="_blank" href="https://github.com/dashanalytics">
+                <h2>Dashanalytics</h2>
+                <p>The web traffic analytics kit in use.</p>
+            </a>
+            <a class="card content center" target="_blank" href="https://github.com/langvm">
+                <h2>LangVM</h2>
+                <p>Compiler infrastructure toolsets.</p>
+            </a>
+        </div>
+        <h1>Electronic Designs</h1>
         <div class="flex flex-wrap gap-5">
             <a class="card content-center" target="_blank" href="https://github.com/jetera-creative/usb-hub-ch334-x16">
                 <h2>USB 2.0 Hub x16</h2>
                 <p>Integrated five CH334R. Various layouts.</p>
+            </a>
+            <a class="card content-center" target="_blank" href="https://github.com/jetera-creative/usb3sata">
+                <h2>USB 3.0 SATA Bridge</h2>
+                <p>JMS578-based solution. USB 3.0 SATA 6Gbps link.</p>
             </a>
         </div>
     </div>
