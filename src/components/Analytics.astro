@@ -1,4 +1,5 @@
 ---
+import Article from "./Article.astro";
 interface Props {
     analytics: {
         host: string
@@ -9,6 +10,25 @@ interface Props {
 const {analytics} = Astro.props;
 ---
 
+<div id="AnalyticsTip" class="hidden z-10 fixed w-full bottom-0 pl-5 pr-5 duration-200">
+    <div class="p-8 pl-10 pr-10 flex flex-wrap gap-10 items-center border-t border-l border-r border-blue-400 rounded-t-2xl shadow-xl bg-opacity-95 bg-light text-black">
+        <a target="_blank" href="https://github.com/dashanalytics/">
+            <img src="https://avatars.githubusercontent.com/u/181559610" width="50" height="50" alt="Dashanalytics"/>
+        </a>
+        <Article>
+            <h3>Privacy Notices</h3>
+            <p>
+                The website collects anonymous statistics data for analyzing web traffic and does not require cookies.
+                Your data will not be shared with third-party.
+            </p>
+        </Article>
+        <a href="" id="AnalyticsTipConfirm"
+           class="ml-auto p-2 pl-5 pr-5 rounded-full font-extrabold text-white bg-blue-900">
+            Got it!
+        </a>
+    </div>
+</div>
+
 {import.meta.env.PROD?
 <script define:vars={{analytics}}>
     function uuidGen() {
@@ -18,10 +38,24 @@ const {analytics} = Astro.props;
     if (localStorage.getItem('uuid') === null) localStorage.setItem('uuid', uuidGen())
     const uuid = localStorage.getItem('uuid')
 
+    const isConfirmed = localStorage.getItem('Analytics:Confirmed')
+
     function report() {
-        fetch(`${analytics.host}/api/v1/reportAccess?deploy_time=${analytics.deployTime}&uuid=${uuid}&target=${encodeURIComponent(`${location.host}:${location.pathname}`)}&user_agent=${encodeURIComponent(navigator.userAgent)}&time=${Date.now()}`).then(() => {
+        fetch(`${analytics.host}/api/v1/reportAccess?deploy_time=${analytics.deployTime}&uuid=${uuid}&target=${encodeURIComponent(`${location.host}:${location.pathname}`)}&user_agent=${encodeURIComponent(navigator.userAgent)}&time=${Date.now()}&confirmed=${isConfirmed ? '1' : '0'}`).then(() => {
         })
     }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const tip = document.getElementById('AnalyticsTip')
+        const confirm = document.getElementById('AnalyticsTipConfirm')
+
+        confirm.addEventListener('click', () => {
+            localStorage.setItem('Analytics:Confirmed', true)
+            tip.classList.toggle('hidden')
+        })
+
+        if (isConfirmed === null) tip.classList.remove('hidden')
+    })
 
     if (uuid !== '0') report()
 </script>:null}
