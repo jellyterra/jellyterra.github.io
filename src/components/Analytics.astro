@@ -10,22 +10,24 @@ interface Props {
 const {analytics} = Astro.props;
 ---
 
-<div id="AnalyticsTip" class="hidden z-10 fixed w-full bottom-0 pl-5 pr-5 duration-200">
-    <div class="p-8 pl-10 pr-10 flex flex-wrap gap-10 items-center border-t border-l border-r border-blue-400 rounded-t-2xl shadow-xl bg-opacity-95 bg-light text-black">
-        <a target="_blank" href="https://github.com/dashanalytics/">
-            <img src="https://avatars.githubusercontent.com/u/181559610" width="50" height="50" alt="Dashanalytics"/>
-        </a>
-        <Article>
-            <h3>Privacy Notices</h3>
-            <p>
-                The website collects anonymous statistics data for analyzing web traffic and does not require cookies.
-                Your data will not be shared with third-party.
-            </p>
-        </Article>
-        <a href="" id="AnalyticsTipConfirm"
-           class="ml-auto p-2 pl-5 pr-5 rounded-full font-extrabold text-white bg-blue-900">
-            Got it!
-        </a>
+<div id="AnalyticsTip" class="hidden z-10 fixed w-full h-full flex-col justify-between bg-opacity-70 bg-light">
+    <div></div>
+    <div class="w-full bottom-0 pl-5 pr-5">
+        <div class="p-8 pl-10 pr-10 flex flex-wrap gap-10 items-center border-t border-l border-r border-blue-400 rounded-t-2xl shadow-xl bg-opacity-95 bg-light text-black">
+            <a target="_blank" href="https://github.com/dashanalytics/">
+                <img src="https://avatars.githubusercontent.com/u/181559610" width="50" height="50" alt="Dashanalytics"/>
+            </a>
+            <Article>
+                <h3>Privacy Notices</h3>
+                <p>
+                    The website collects anonymous statistics data for analyzing web traffic and does not require Cookie.
+                    Your data will not be shared with third-party.
+                </p>
+            </Article>
+            <a href="" id="AnalyticsTipConfirm" class="ml-auto p-2 pl-5 pr-5 rounded-full font-extrabold text-white bg-blue-900">
+                Got it!
+            </a>
+        </div>
     </div>
 </div>
 
@@ -51,10 +53,14 @@ const {analytics} = Astro.props;
 
         confirm.addEventListener('click', () => {
             localStorage.setItem('Analytics:Confirmed', true)
-            tip.classList.toggle('hidden')
+            tip.classList.remove('flex')
+            tip.classList.add('hidden')
         })
 
-        if (isConfirmed === null) tip.classList.remove('hidden')
+        if (isConfirmed === null) {
+            tip.classList.remove('hidden')
+            tip.classList.add('flex')
+        }
     })
 
     if (uuid !== '0') report()
