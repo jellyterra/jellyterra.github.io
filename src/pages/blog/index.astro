@@ -1,7 +1,7 @@
 ---
 import Footer from "../../components/Footer.astro";
 import BaseHead from "../../components/BaseHead.astro";
-import {BG_RANDOM_IMAGE_SRC, BLOG_HEADER, FOOTER} from "../../consts";
+import {BG_RANDOM_IMAGE_SRC, POST_HEADER, FOOTER} from "../../consts";
 
 import {getCollection} from 'astro:content'
 import PostHeader from "../../components/post/PostHeader.astro";
@@ -24,7 +24,7 @@ const tags = Array.from(tagSet.values())
 
 <body class="dark" style={`background-image: url('${BG_RANDOM_IMAGE_SRC || ""}')`}>
 <div class="sticky top-0">
-    <PostHeader header={BLOG_HEADER} prefix="blog"/>
+    <PostHeader header={POST_HEADER} prefix="blog"/>
 </div>
 <div class="p-10 flex flex-col lg:flex-row-reverse gap-5 dark:bg-dark dark:bg-opacity-50">
     <div class="lg:w-[20vw]">

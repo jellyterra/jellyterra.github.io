@@ -64,12 +64,12 @@ export const HEADER = {
             href: "/journal"
         },
         {
-            title: "Crafting",
-            href: "/crafting"
+            title: "Projects",
+            href: "/projects"
         },
         {
             title: "Self-Host",
-            href: "/hosted"
+            href: "/self-host"
         },
         {
             title: "Live Stream",
@@ -195,7 +195,7 @@ export const FOOTER = {
     ],
 }
 
-export const BLOG_HEADER = {
+export const POST_HEADER = {
     logo: {
         src: "/favicon.png",
         height: 50,
@@ -204,7 +204,7 @@ export const BLOG_HEADER = {
     nav: [
         {
             title: "GitHub",
-            href: "https://github.com"
+            href: "https://github.com/jellyterra"
         },
     ],
 }
