@@ -20,6 +20,7 @@ export const BG_RANDOM_IMAGE_SRC = 'https://dmoe.cc/random.php'
 
 export const NEXTCLOUD_MAILBOX = 'https://get.jellyterra.com/url/p/nextcloud/mailbox'
 
+export const CF_WEB_ANALYTICS_TOKEN = "b7aba75feaa64572ac71536e1b51ab22"
 export const ANALYTICS = {
     host: 'https://analytics.jellyterra.com',
     deployTime: formatTime(new Date(Date.now()))

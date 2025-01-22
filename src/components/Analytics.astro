@@ -1,5 +1,6 @@
 ---
 import Article from "./Article.astro";
+import {CF_WEB_ANALYTICS_TOKEN} from "../consts";
 interface Props {
     analytics: {
         host: string
@@ -9,6 +10,9 @@ interface Props {
 
 const {analytics} = Astro.props;
 ---
+
+{import.meta.env.PROD?
+<Fragment set:html={`<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "${CF_WEB_ANALYTICS_TOKEN}"}'></script>`}/>:null}
 
 <div id="AnalyticsTip" class="hidden z-10 fixed w-full h-full flex-col justify-between bg-opacity-70 bg-light">
     <div></div>
