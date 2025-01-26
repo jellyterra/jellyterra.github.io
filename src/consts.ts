@@ -86,7 +86,7 @@ export const HEADER = {
 export const FOOTER = {
     copyright: {
         owner: "Jelly Terra",
-        date: 2024,
+        date: new Date(Date.now()).getUTCFullYear(),
         license_name: "Creative Commons Attribution-ShareAlike License 4.0",
         license_url: "https://creativecommons.org/licenses/by-sa/4.0/legalcode.en"
     },

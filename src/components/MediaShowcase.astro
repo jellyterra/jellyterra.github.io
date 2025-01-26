@@ -1,8 +1,8 @@
 ---
-const {media} = Astro.props
+const {media, ...rest} = Astro.props
 ---
 
-<div class="m-5 flex flex-wrap gap-10 dark:invert">
+<div class:list={["dark:invert", rest['class']]}>
     {media.map((item: any) =>
             <a target="_blank" href={item.href}>
                 <img class="size-8" src={`https://simpleicons.org/icons/${item.icon}.svg`} alt={item.icon}>

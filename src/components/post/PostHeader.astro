@@ -23,11 +23,11 @@ interface Props {
 const {header, prefix} = Astro.props
 ---
 
-<header class="m-0 pt-2 pb-2 pl-20 pr-20 flex flex-wrap justify-between items-center bg-opacity shadow-xl bg-light dark:bg-[#2a2a2e] dark:text-white">
+<header class="m-0 max-sm:p-2 max-sm:pl-5 pt-2 pb-2 pl-20 pr-20 flex flex-wrap justify-between items-center bg-opacity shadow-xl bg-light dark:bg-[#2a2a2e] dark:text-white">
     <div><a href="/"><img src={header.logo.src} width={header.logo.width} height={header.logo.height} alt=""></a></div>
 
     <div class="flex flex-wrap gap-2">
-        <nav class="mr-20 flex flex-wrap items-center gap-10">
+        <nav class="max-sm:mr-2 mr-20 flex flex-wrap items-center gap-10">
             {
                 header.nav.map((link: any) =>
                         <a class="select-none duration-200 font-bold hover:text-gray-500" target="_blank"
@@ -36,7 +36,7 @@ const {header, prefix} = Astro.props
             }
         </nav>
         <DarkModeButton/>
-        <IconDropdown class="w-[30vw]" style="right:0" icon="update">
+        <IconDropdown class="md:w-[30vw] md:right-0" icon="update">
             <div class="p-4 flex flex-col gap-4">
                 <Article>
                     <h3><span class="material-symbols-outlined">update</span><span>Post Update Tracker</span></h3>
@@ -44,7 +44,7 @@ const {header, prefix} = Astro.props
                 <PostTracker prefix={prefix}/>
             </div>
         </IconDropdown>
-        <IconDropdown class="w-max" style="right:0" icon="rss_feed">
+        <IconDropdown class="w-max md:right-0" icon="rss_feed">
             <div class="p-4">
                 <Article>
                     <h3><span class="material-symbols-outlined">rss_feed</span><span>RSS Feed</span></h3>

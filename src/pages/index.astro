@@ -23,9 +23,7 @@ import {Content as More} from "../content/intro/more.md"
 </head>
 <body class="dark">
 <div class="h-screen flex flex-col justify-between">
-    <div class="sticky top-0">
-        <Header header={HEADER}/>
-    </div>
+    <Header header={HEADER}/>
     <div class="relative flex flex-col gap-5 items-center text-center">
         <img src="/favicon.png" width="230" height="230" alt="avatar">
         <p style="font-size: 200%">
@@ -38,7 +36,7 @@ import {Content as More} from "../content/intro/more.md"
         </div>
     </div>
     <div class="ml-auto mr-auto mb-20">
-        <MediaShowcase media={FOOTER.media}/>
+        <MediaShowcase class="ml-5 mr-5 flex flex-row gap-6 sm:gap-10" media={FOOTER.media}/>
     </div>
 </div>
 <main>
@@ -53,7 +51,7 @@ import {Content as More} from "../content/intro/more.md"
     <section class="normal">
         <div>
             <Bookshelf/>
-            <div class="m-10 flex flex-wrap gap-5">
+            <div class="mt-5 w-max">
                 <LinkButton href={NEXTCLOUD_MAILBOX} title="Send me some e-books or publications."/>
             </div>
         </div>
@@ -74,8 +72,8 @@ import {Content as More} from "../content/intro/more.md"
             <CodeStatus/>
         </div>
         <div class="flex flex-col gap-1">
-            <img src="https://github-readme-stats.vercel.app/api?username=jellyterra&show_icons=true&theme=radical"
-                 alt="GitHub Stats">
+            <img src="https://github-readme-stats.vercel.app/api/wakatime?username=jellyterra&api_domain=wakapi.jellyterra.com&bg_color=1A202C&title_color=2F855A&icon_color=2F855A&text_color=ffffff&custom_title=Wakapi%20Week%20Stats&layout=compact"
+                 alt="Wakapi Stats">
             <img src="https://github-readme-stats.vercel.app/api/wakatime?username=jellyterra&layout=compact"
                  alt="WakaTime Stats">
         </div>
@@ -108,6 +106,8 @@ import {Content as More} from "../content/intro/more.md"
         padding: 10vh 10vw;
 
         line-height: 200%;
+
+        @apply gap-10;
 
         h1 {
             font-size: 40px;

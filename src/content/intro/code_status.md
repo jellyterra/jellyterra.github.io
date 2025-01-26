@@ -1,3 +1,3 @@
-# Code Status
+# Stats
 
-Check more on my [GitHub](https://github.com/jellyterra).
+May check more on my [GitHub](https://github.com/jellyterra).
