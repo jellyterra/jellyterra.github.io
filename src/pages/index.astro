@@ -1,7 +1,7 @@
 ---
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
-import {HEADER, FOOTER, PROMPT_ATTR, NEXTCLOUD_MAILBOX} from '../consts'
+import {HEADER, FOOTER, PROMPT_ATTR, NEXTCLOUD_DROPBOX} from '../consts'
 import BaseHead from "../components/BaseHead.astro"
 import PromptStyleText from "../components/PromptStyleText.astro";
 import LinkButton from "../components/ui/LinkButton.astro";
@@ -52,7 +52,7 @@ import {Content as More} from "../content/intro/more.md"
         <div>
             <Bookshelf/>
             <div class="mt-5 w-max">
-                <LinkButton href={NEXTCLOUD_MAILBOX} title="Send me some e-books or publications."/>
+                <LinkButton href={NEXTCLOUD_DROPBOX} title="Upload some e-books or fun stuff to me."/>
             </div>
         </div>
         <div>

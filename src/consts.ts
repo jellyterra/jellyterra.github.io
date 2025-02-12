@@ -11,14 +11,14 @@ function formatTime(date: Date) {
     return +`${year}${month}${day}${hour}${minute}${second}`
 }
 
-export const SITE_HOST = 'https://jellyterra.com'
-export const SITE_HOSTNAME = 'jellyterra.com'
+export const SITE_HOST = 'https://www.jellyterra.com'
+export const SITE_HOSTNAME = 'www.jellyterra.com'
 export const SITE_TITLE = 'Jelly Terra';
 export const SITE_DESCRIPTION = 'Jelly Terra\'s Website';
 
 export const BG_RANDOM_IMAGE_SRC = 'https://dmoe.cc/random.php'
 
-export const NEXTCLOUD_MAILBOX = 'https://get.jellyterra.com/url/p/nextcloud/mailbox'
+export const NEXTCLOUD_DROPBOX = 'https://get.jellyterra.com/url/p/nextcloud/dropbox'
 
 export const CF_WEB_ANALYTICS_TOKEN = "b7aba75feaa64572ac71536e1b51ab22"
 export const ANALYTICS = {
@@ -112,7 +112,7 @@ export const FOOTER = {
         },
         {
             icon: "nextcloud",
-            href: NEXTCLOUD_MAILBOX,
+            href: NEXTCLOUD_DROPBOX,
         },
         {
             icon: "bilibili",
