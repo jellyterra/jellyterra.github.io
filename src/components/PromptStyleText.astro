@@ -1,5 +1,5 @@
 ---
-interface Props {
+interface Attr {
     attr: {
         texts: string[]
         rounds: number
@@ -13,12 +13,14 @@ interface Props {
     }
 }
 
-const {attr} = Astro.props
+const {attr, ...rest } = Astro.props
 ---
 
+<div class:list={[rest["class"]]}>
 <span class="font-bold">&gt;</span>
 <span id="promptStyleText"></span>
 <span class="flash">_</span>
+</div>
 
 <script define:vars={{attr}}>
     async function delay(timeout) {

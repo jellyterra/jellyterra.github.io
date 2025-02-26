@@ -32,13 +32,10 @@ export const SOURCE = {
 
 export const PROMPT_ATTR = {
     texts: [
-        "Student. Programmer. Socialist. ACGN. Maybe brilliant.",
+        "Student. Socialism. ACG Otaku. Maybe brilliant.",
         "Computer Science.",
-        "Computer System Engineering.",
         "Computer Architecture.",
-        "Formal Verification.",
         "Amateur Electronics Engineering.",
-        "Go, Kotlin, Lean, Rust, Scala, TypeScript, OCaml.",
     ],
     rounds: 9999,
     duration: {
