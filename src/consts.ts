@@ -16,7 +16,9 @@ export const SITE_HOSTNAME = 'www.jellyterra.com'
 export const SITE_TITLE = 'Jelly Terra';
 export const SITE_DESCRIPTION = 'Jelly Terra\'s Website';
 
-export const BG_RANDOM_IMAGE_SRC = 'https://dmoe.cc/random.php'
+export const BG_RANDOM_IMAGE_SRC = 'https://get.jellyterra.com/random/bg-img'
+
+export const AVATAR_IMG_SRC = 'https://avatars.githubusercontent.com/u/80201595'
 
 export const NEXTCLOUD_DROPBOX = 'https://get.jellyterra.com/url/p/nextcloud/dropbox'
 
@@ -32,16 +34,21 @@ export const SOURCE = {
 
 export const PROMPT_ATTR = {
     texts: [
-        "Student. Socialism. ACG Otaku. Maybe brilliant.",
-        "Computer Science.",
-        "Computer Architecture.",
-        "Amateur Electronics Engineering.",
+        "Computer Architecture daisuki~",
+        "ACG otaku desu yo!",
+        "EECS accelerates the world.",
+        "Amateur Electronics Engineering?",
+        "RISC-V is my love.",
+        "Making some fun stuff.",
+        "Type theory, amazing ...",
+        "Formal verification learning in progress. qwq",
+        "「Powered by High Level Synthesis」",
     ],
     rounds: 9999,
     duration: {
-        type: 100,
+        type: 50,
         back: 10,
-        stay: 2000,
+        stay: 1000,
         next: 5000,
     }
 }
@@ -62,16 +69,12 @@ export const HEADER = {
             href: "/journal"
         },
         {
-            title: "Projects",
+            title: "Fun Stuff",
             href: "/projects"
         },
         {
             title: "Self-Host",
             href: "/self-host"
-        },
-        {
-            title: "Live Stream",
-            href: "https://live.bilibili.com/31960659"
         },
         {
             title: "GitHub",

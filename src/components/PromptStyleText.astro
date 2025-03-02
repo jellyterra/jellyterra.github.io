@@ -23,13 +23,17 @@ const {attr, ...rest } = Astro.props
 </div>
 
 <script define:vars={{attr}}>
+    function shuffle(vec) {
+        return vec.map(v => ({v, sort: Math.random()})).sort((a, b) => a.sort - b.sort).map(({v}) => v)
+    }
+
     async function delay(timeout) {
         await new Promise(resolve => setTimeout(resolve, timeout))
     }
 
     async function update(text) {
         const e = document.getElementById('promptStyleText')
-        while (e.textContent.length != 0) {
+        while (e.textContent.length !== 0) {
             e.textContent = e.textContent.substring(0, e.textContent.length - 1)
             await delay(attr.duration.back)
         }
@@ -42,7 +46,10 @@ const {attr, ...rest } = Astro.props
 
     async function start() {
         for (let i = 0; i < attr.rounds; i++) {
-            for (const text of attr.texts) {
+            const texts = shuffle(attr.texts)
+            texts.push("$ systemctl restart prompt ↵")
+
+            for (const text of texts) {
                 await update(text)
                 await delay(attr.duration.next)
             }

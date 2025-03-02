@@ -21,7 +21,7 @@ interface Props {
 
 const {source_base, entry} = Astro.props;
 
-const bodyStyle = `background-image: url('${entry.data.backgroundImage || BG_RANDOM_IMAGE_SRC || ""}')`
+const backgroundImage = entry.data.backgroundImage || BG_RANDOM_IMAGE_SRC
 
 const sideImage = entry.data.sideImage?.startsWith('/') || entry.data.sideImage?.startsWith('https://') ? entry.data.sideImage : `/blog/${entry.slug}/${entry.data.sideImage}`
 ---
@@ -32,7 +32,7 @@ const sideImage = entry.data.sideImage?.startsWith('/') || entry.data.sideImage?
     <BaseHead title={entry.data.title} data={entry.data}/>
 </head>
 
-<body class="dark" style={bodyStyle}>
+<body class="dark">
 <div class="sticky top-0">
     <PostHeader header={POST_HEADER} prefix="blog">
         <IconButton id="ToggleList" class="md:ml-10" icon="format_list_bulleted"/>
@@ -64,7 +64,7 @@ const sideImage = entry.data.sideImage?.startsWith('/') || entry.data.sideImage?
             <TagShowcase tags={entry.data.tags}></TagShowcase>
             <ViewStatistics path={`/blog/${entry.slug}/`}/>
         </div>
-        <div class="mb-10 max-h-40 max-w-80 content-center">
+        <div class="max-lg:hidden mb-10 max-h-40 max-w-80 content-center">
             {
                 entry.data.sideImage && entry.data.sideImage.endsWith("svg") ?
                         <img class="rounded-xl object-contain" loading="lazy" width="200" height="200" src={sideImage}
@@ -93,12 +93,14 @@ const sideImage = entry.data.sideImage?.startsWith('/') || entry.data.sideImage?
     }
 </style>
 
-<script define:vars={{entry}}>
+<script define:vars={{backgroundImage, entry}}>
     localStorage.setItem(`PostTracker:blog:${entry.slug}`, JSON.stringify({
         title: entry.data.title,
         latestUpdate: entry.data.updateDate || entry.data.pubDate
     }));
     document.addEventListener('DOMContentLoaded', () => {
+        document.body.style.backgroundImage = `url('${backgroundImage}')`
+
         const titles = document.getElementsByTagName('main')[0].querySelectorAll('h1,h2')
         const titleList = document.getElementById('Titles')
 

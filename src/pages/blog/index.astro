@@ -15,6 +15,8 @@ const tagSet = new Set<string>()
 collection.map((entry: any) => entry.data.tags.map((tag: string) => tagSet.add(tag)))
 
 const tags = Array.from(tagSet.values())
+
+const backgroundImage = BG_RANDOM_IMAGE_SRC
 ---
 
 <html lang="en">
@@ -22,7 +24,7 @@ const tags = Array.from(tagSet.values())
     <BaseHead title="Blog Index"/>
 </head>
 
-<body class="dark" style={`background-image: url('${BG_RANDOM_IMAGE_SRC || ""}')`}>
+<body class="dark">
 <div class="sticky top-0">
     <PostHeader header={POST_HEADER} prefix="blog"/>
 </div>
@@ -40,3 +42,9 @@ const tags = Array.from(tagSet.values())
 <Footer footer={FOOTER}/>
 </body>
 </html>
+
+<script define:vars={{backgroundImage}}>
+    document.addEventListener('DOMContentLoaded', () => {
+        document.body.style.backgroundImage = `url('${backgroundImage}')`
+    });
+</script>
