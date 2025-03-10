@@ -28,12 +28,10 @@ const backgroundImage = BG_RANDOM_IMAGE_SRC
 <div class="sticky top-0">
     <PostHeader header={POST_HEADER} prefix="blog"/>
 </div>
-<div class="max-sm:p-2 p-10 flex flex-col lg:flex-row-reverse gap-5 dark:bg-dark dark:bg-opacity-50">
-    <div class="lg:w-[20vw]">
-        <div class="card flex flex-col gap-5">
-            <div class="text-2xl font-bold">Tags</div>
-            <TagShowcase tags={tags}/>
-        </div>
+<div class="max-sm:p-2 p-10 flex flex-col gap-5 dark:bg-dark dark:bg-opacity-50">
+    <div class="card flex flex-col gap-5">
+        <div class="text-2xl font-bold">Tags</div>
+        <TagShowcase tags={tags}/>
     </div>
     <div class="w-full">
         <PostEntryList collection={collection} prefix="blog"/>
