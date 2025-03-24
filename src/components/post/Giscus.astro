@@ -12,22 +12,24 @@ interface Props {
 const {config} = Astro.props
 ---
 
-<div class="rounded-2xl p-5 text-center text-white bg-[#2a2a2e] bg-opacity">
-    <div class="text-2xl font-bold">What do you think about it?</div>
-    <script src="https://giscus.app/client.js"
-            data-repo={config.repo}
-            data-repo-id={config.repoId}
-            data-category={config.category}
-            data-category-id={config.categoryId}
-            data-mapping={config.mapping}
-            data-strict="0"
-            data-reactions-enabled="1"
-            data-emit-metadata="0"
-            data-input-position="top"
-            data-theme="preferred_color_scheme"
-            data-lang="zh-CN"
-            data-loading="lazy"
-            crossorigin="anonymous"
-            async>
-    </script>
-</div>
+{import.meta.env.PROD?
+    <div class="rounded-2xl p-5 text-center text-white bg-[#2a2a2e] bg-opacity">
+        <div class="text-2xl font-bold">What do you think about it?</div>
+        <script src="https://giscus.app/client.js"
+                data-repo={config.repo}
+                data-repo-id={config.repoId}
+                data-category={config.category}
+                data-category-id={config.categoryId}
+                data-mapping={config.mapping}
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="top"
+                data-theme="preferred_color_scheme"
+                data-lang="zh-CN"
+                data-loading="lazy"
+                crossorigin="anonymous"
+                async>
+        </script>
+    </div> : null
+}
