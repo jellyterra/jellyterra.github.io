@@ -120,10 +120,16 @@ const sideImage = entry.data.sideImage?.startsWith('/') || entry.data.sideImage?
         })
 
         mainContainer.addEventListener('scroll', () => {
-            for (const {id} of headings) document.getElementById(`${id}-a`).classList.remove('font-extrabold', 'border-l-2', 'border-black', 'dark:border-white')
-            for (const {id} of headings) if (document.getElementById(id).getClientRects()[0].top > -1) {
-                document.getElementById(`${id}-a`).add('font-extrabold', 'border-l-2', 'border-black', 'dark:border-white')
-                return
+            for (const {slug} of headings) {
+                const classList = document.getElementById(`${slug}-a`).classList
+                if (classList) classList.remove('font-extrabold', 'border-l-2', 'border-black', 'dark:border-white')
+            }
+            for (const {slug} of headings) if (document.getElementById(slug).getClientRects()[0].top > -1) {
+                const classList = document.getElementById(`${slug}-a`).classList
+                if (classList) {
+                    classList.add('font-extrabold', 'border-l-2', 'border-black', 'dark:border-white')
+                    return
+                }
             }
         })
     })
