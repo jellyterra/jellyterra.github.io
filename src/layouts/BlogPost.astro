@@ -31,11 +31,6 @@ const sideImage = entry.data.sideImage?.startsWith('/') || entry.data.sideImage?
 <head>
     <base target="_blank"/>
     <BaseHead title={entry.data.title} data={entry.data}/>
-    <script is:inline>
-        function scrollToId(id) {
-            document.getElementById(id).scrollIntoView({behavior: "smooth"})
-        }
-    </script>
 </head>
 
 <body class="flex flex-col">
@@ -49,7 +44,7 @@ const sideImage = entry.data.sideImage?.startsWith('/') || entry.data.sideImage?
         <main class="p-5 lg:p-20 flex flex-col gap-10">
             <div class="flex flex-wrap gap-5 justify-between">
                 <div class="flex flex-col gap-5">
-                    <div class="font-bold text-5xl" id="title">{entry.data.title}</div>
+                    <div class="font-bold text-5xl">{entry.data.title}</div>
                     <div class="text-2xl">{entry.data.description}</div>
                     <div class="flex flex-wrap gap-5 items-center">
                         <IconLink icon="history" href={`${SOURCE.base}/${source_base}/${entry.id}`} text="History"/>
@@ -89,8 +84,8 @@ const sideImage = entry.data.sideImage?.startsWith('/') || entry.data.sideImage?
         <Footer footer={FOOTER}/>
     </div>
     <aside id="TableOfContent" class="overflow-y-scroll p-10 pl-6 text-sm flex flex-col gap-2 duration-200 shadow-2xl">
-        <a class="font-bold list-none" onclick="scrollToId('title');return false" target="_self" href="#title">{entry.data.title}</a>
-        {headings.map(({depth, text, slug}) => { return (<a id={`${slug}-a`} class={`list-none pl-${depth*2}`} onclick={`scrollToId("${slug}");return false`} target="_self" href={`#${slug}`}>{text}</a>) })}
+        <div class="font-bold list-none">{entry.data.title}</div>
+        {headings.map(({depth, text, slug}) => { return (<a id={`${slug}-a`} class={`list-none pl-${depth*2}`} target="_self" href={`#${slug}`}>{text}</a>) })}
     </aside>
 </div>
 <ImageLen/>
@@ -110,14 +105,34 @@ const sideImage = entry.data.sideImage?.startsWith('/') || entry.data.sideImage?
     }));
     document.addEventListener('DOMContentLoaded', () => {
         document.body.style.backgroundImage = `url('${backgroundImage}')`
+        document.body.style.backgroundSize = "cover"
 
         const mainContainer = document.getElementById('MainContentContainer')
         const tableOfContent = document.getElementById('TableOfContent')
 
-        document.getElementById('ToggleList').addEventListener('click', () => {
+        const isSmall = window.matchMedia("(max-width: 700px)").matches
+        
+        const toggle = () => {
             tableOfContent.classList.toggle('flex')
             tableOfContent.classList.toggle('hidden')
-        })
+            if (isSmall) tableOfContent.classList.contains('hidden')
+                ? mainContainer.classList.remove('hidden')
+                : mainContainer.classList.add('hidden')
+        }
+
+        if (isSmall) toggle()
+
+        document.getElementById('ToggleList').addEventListener('click', toggle)
+
+        for (const {slug} of headings) {
+            const anchor = document.getElementById(`${slug}-a`)
+            if (anchor && !isSmall) {
+                anchor.onclick = () => {
+                    document.getElementById(slug).scrollIntoView({behavior: "smooth"})
+                    return false
+                }
+            }
+        }
 
         mainContainer.addEventListener('scroll', () => {
             for (const {slug} of headings) {
