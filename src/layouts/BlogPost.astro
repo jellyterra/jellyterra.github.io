@@ -88,7 +88,7 @@ const sideImage = entry.data.sideImage?.startsWith('/') || entry.data.sideImage?
         </main>
         <Footer footer={FOOTER}/>
     </div>
-    <aside id="TableOfContent" class="overflow-y-scroll p-10 text-sm flex flex-col gap-2 duration-200 shadow-2xl">
+    <aside id="TableOfContent" class="overflow-y-scroll p-10 pl-6 text-sm flex flex-col gap-2 duration-200 shadow-2xl">
         <a class="font-bold list-none" onclick="scrollToId('title');return false" target="_self" href="#title">{entry.data.title}</a>
         {headings.map(({depth, text, slug}) => { return (<a id={`${slug}-a`} class={`list-none pl-${depth*2}`} onclick={`scrollToId("${slug}");return false`} target="_self" href={`#${slug}`}>{text}</a>) })}
     </aside>
