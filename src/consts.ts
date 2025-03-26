@@ -28,8 +28,8 @@ export const ANALYTICS = {
     deployTime: formatTime(new Date(Date.now()))
 }
 
-export const SOURCE = {
-    base: 'https://github.com/jellyterra/jellyterra.github.io/commits/master'
+export const COMMIT_SOURCE_URL_BASE = {
+    base: 'https://github.com/jellyterra/jellyterra.github.io/commits/main'
 }
 
 export const PROMPT_ATTR = {

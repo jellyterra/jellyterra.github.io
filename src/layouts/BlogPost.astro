@@ -3,7 +3,7 @@ import {type CollectionEntry} from 'astro:content'
 
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
-import {POST_HEADER, FOOTER, GISCUS_BLOG, BG_RANDOM_IMAGE_SRC, SOURCE} from "../consts";
+import {POST_HEADER, FOOTER, GISCUS_BLOG, BG_RANDOM_IMAGE_SRC, COMMIT_SOURCE_URL_BASE} from "../consts";
 import PostHeader from "../components/post/PostHeader.astro";
 import TagShowcase from "../components/post/TagShowcase.astro";
 import Giscus from "../components/post/Giscus.astro";
@@ -47,7 +47,7 @@ const sideImage = entry.data.sideImage?.startsWith('/') || entry.data.sideImage?
                     <div class="font-bold text-5xl">{entry.data.title}</div>
                     <div class="text-2xl">{entry.data.description}</div>
                     <div class="flex flex-wrap gap-5 items-center">
-                        <IconLink icon="history" href={`${SOURCE.base}/${source_base}/${entry.id}`} text="History"/>
+                        <IconLink icon="history" href={`${COMMIT_SOURCE_URL_BASE.base}/${source_base}/${entry.id}`} text="History"/>
                         <div class="text-gray-500">
                             {
                                 entry.data.updateDate &&
