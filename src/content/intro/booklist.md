@@ -21,7 +21,7 @@
 
 📖 [ISBN](https://isbnsearch.org/isbn/9787121315589) 2021 印制电路板（PCB）设计技术与实践（第三版）
 
-📖 [ISBN](https://isbnsearch.org/isbn/9787111544937) 2022 Computer Systems: Aprogrammer's Perspective (3rd Edition)
+📖 [ISBN](https://isbnsearch.org/isbn/9787111544937) 2022 Computer Systems: A Programmer's Perspective (3rd Edition)
 
 📖 [ISBN](https://isbnsearch.org/isbn/9787111631972) 2022 Gettings started with LLVM core libraries
 
@@ -32,3 +32,5 @@
 📖 [ISBN](https://isbnsearch.org/isbn/9787111697404) 2024 Pratical Foundations for Programming Languages (2nd Edition)
 
 📖 [ISBN](https://isbnsearch.org/isbn/9787308249591) 2024 RISC-V CPU 芯片设计：香山源代码剖析<br/>^ got on the **RISC-V Summit China 2024** Day 2 activity **香山 Tutorial**
+
+📖 [ISBN](https://isbnsearch.org/isbn/9787111302872) 2025 Database System Implementation (2nd Edition)
