@@ -1,0 +1,28 @@
+---
+interface Props {
+    headings: {depth: number, slug: string, text: string}[]
+}
+
+const {headings} = Astro.props
+---
+
+{headings.map(({depth, text, slug}) => { return (<a id={`${slug}-a`} class={`list-none pl-${depth*2}`} target="_self" href={`#${slug}`}>{text}</a>) })}
+
+<script define:vars={{headings}}>
+    document.addEventListener('DOMContentLoaded', () => {
+        const mainContainer = document.getElementById('MainContentContainer')
+        mainContainer.addEventListener('scroll', () => {
+            for (const {slug} of headings) {
+                const classList = document.getElementById(`${slug}-a`).classList
+                if (classList) classList.remove('font-extrabold', 'border-l-2', 'border-black', 'dark:border-white')
+            }
+            for (const {slug} of headings) if (document.getElementById(slug).getClientRects()[0].top > -1) {
+                const classList = document.getElementById(`${slug}-a`).classList
+                if (classList) {
+                    classList.add('font-extrabold', 'border-l-2', 'border-black', 'dark:border-white')
+                    return
+                }
+            }
+        })
+    })
+</script>

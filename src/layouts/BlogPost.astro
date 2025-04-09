@@ -13,6 +13,7 @@ import Article from "../components/Article.astro";
 import ImageLen from "../components/ImageLen.astro";
 import ViewStatistics from "../components/post/ViewStatistics.astro";
 import IconButton from "../components/ui/IconButton.astro";
+import TableOfContent from '../components/post/TableOfContent.astro';
 
 interface Props {
     source_base: string
@@ -83,9 +84,9 @@ const sideImage = entry.data.sideImage?.startsWith('/') || entry.data.sideImage?
         </main>
         <Footer footer={FOOTER}/>
     </div>
-    <aside id="TableOfContent" class="overflow-y-scroll p-10 pl-6 text-sm flex flex-col gap-2 duration-200 shadow-2xl">
+    <aside id="TableOfContent" class="md:max-w-[20vw] overflow-y-scroll p-10 pl-6 text-sm flex flex-col gap-2 duration-200 shadow-2xl">
         <div class="font-bold list-none">{entry.data.title}</div>
-        {headings.map(({depth, text, slug}) => { return (<a id={`${slug}-a`} class={`list-none pl-${depth*2}`} target="_self" href={`#${slug}`}>{text}</a>) })}
+        <TableOfContent headings={headings}/>
     </aside>
 </div>
 <ImageLen/>
@@ -102,7 +103,8 @@ const sideImage = entry.data.sideImage?.startsWith('/') || entry.data.sideImage?
     localStorage.setItem(`PostTracker:blog:${entry.slug}`, JSON.stringify({
         title: entry.data.title,
         latestUpdate: entry.data.updateDate || entry.data.pubDate
-    }));
+    }))
+
     document.addEventListener('DOMContentLoaded', () => {
         document.body.style.backgroundImage = `url('${backgroundImage}')`
         document.body.style.backgroundSize = "cover"
@@ -111,13 +113,16 @@ const sideImage = entry.data.sideImage?.startsWith('/') || entry.data.sideImage?
         const tableOfContent = document.getElementById('TableOfContent')
 
         const isSmall = window.matchMedia("(max-width: 700px)").matches
+
+        let currentSlug = ""
         
         const toggle = () => {
             tableOfContent.classList.toggle('flex')
             tableOfContent.classList.toggle('hidden')
-            if (isSmall) tableOfContent.classList.contains('hidden')
-                ? mainContainer.classList.remove('hidden')
-                : mainContainer.classList.add('hidden')
+            if (isSmall) {
+                tableOfContent.classList.contains('hidden') ? mainContainer.classList.remove('hidden') : mainContainer.classList.add('hidden')
+                document.getElementById(currentSlug)?.scrollIntoView({behavior: "smooth"})
+            }
         }
 
         if (isSmall) toggle()
@@ -126,26 +131,18 @@ const sideImage = entry.data.sideImage?.startsWith('/') || entry.data.sideImage?
 
         for (const {slug} of headings) {
             const anchor = document.getElementById(`${slug}-a`)
-            if (anchor && !isSmall) {
-                anchor.onclick = () => {
-                    document.getElementById(slug).scrollIntoView({behavior: "smooth"})
-                    return false
+            if (anchor) {
+                if (isSmall) {
+                    anchor.onclick = () => {
+                        currentSlug = slug
+                    }
+                } else {
+                    anchor.onclick = () => {
+                        document.getElementById(slug).scrollIntoView({behavior: "smooth"})
+                        return false
+                    }
                 }
             }
         }
-
-        mainContainer.addEventListener('scroll', () => {
-            for (const {slug} of headings) {
-                const classList = document.getElementById(`${slug}-a`).classList
-                if (classList) classList.remove('font-extrabold', 'border-l-2', 'border-black', 'dark:border-white')
-            }
-            for (const {slug} of headings) if (document.getElementById(slug).getClientRects()[0].top > -1) {
-                const classList = document.getElementById(`${slug}-a`).classList
-                if (classList) {
-                    classList.add('font-extrabold', 'border-l-2', 'border-black', 'dark:border-white')
-                    return
-                }
-            }
-        })
     })
 </script>
