@@ -120,7 +120,7 @@ export const FOOTER = {
         },
         {
             icon: "spotify",
-            href: "https://open.spotify.com/user/t7l8rdnzrcne9lcgnp97hlk4b",
+            href: "https://open.spotify.com/playlist/3yBjLsMNkiJ3YqID8c5puy",
         },
         {
             icon: "maildotru",
