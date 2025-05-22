@@ -1,10 +1,10 @@
 ---
 import Header from '../../components/Header.astro'
 import Footer from '../../components/Footer.astro'
-import {HEADER, FOOTER, BG_RANDOM_IMAGE_SRC} from '../../consts'
+import {HEADER, FOOTER, BG_IMG_SRC} from '../../consts'
 import BaseHead from "../../components/BaseHead.astro"
 
-const bodyStyle = `background-image: url('${BG_RANDOM_IMAGE_SRC || ""}')`
+const bodyStyle = `background-image: url('${BG_IMG_SRC || ""}')`
 ---
 
 <!DOCTYPE html>
@@ -13,7 +13,7 @@ const bodyStyle = `background-image: url('${BG_RANDOM_IMAGE_SRC || ""}')`
     <BaseHead title="Crafting"/>
 </head>
 <body class="dark" style={bodyStyle}>
-<div class="min-h-screen flex flex-col bg-opacity bg-light dark:bg-dark dark:bg-opacity-50">
+<div class="min-h-screen flex flex-col bg-opacity-80 dark:bg-opacity-80 bg-light dark:bg-dark dark:bg-opacity-50">
     <Header header={HEADER}/>
     <div class="p-10 flex flex-col gap-10">
         <h1>Utilities</h1>

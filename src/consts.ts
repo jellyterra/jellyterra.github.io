@@ -16,7 +16,7 @@ export const SITE_HOSTNAME = 'www.jellyterra.com'
 export const SITE_TITLE = 'Jelly Terra';
 export const SITE_DESCRIPTION = 'Jelly Terra\'s Website';
 
-export const BG_RANDOM_IMAGE_SRC = 'https://get.jellyterra.com/random/bg-img'
+export const BG_IMG_SRC = 'https://pbs.twimg.com/media/GmpA7bLbAAAr-DM?format=png&name=large'
 
 export const AVATAR_IMG_SRC = 'https://avatars.githubusercontent.com/u/80201595'
 

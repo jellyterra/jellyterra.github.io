@@ -1,14 +1,14 @@
 ---
 import Footer from "../../components/Footer.astro";
 import BaseHead from "../../components/BaseHead.astro";
-import {BG_RANDOM_IMAGE_SRC, POST_HEADER, FOOTER} from "../../consts";
+import {BG_IMG_SRC, POST_HEADER, FOOTER} from "../../consts";
 
 import {getCollection} from 'astro:content'
 import PostHeader from "../../components/post/PostHeader.astro";
 
 const collection = await getCollection('journal')
 
-const bodyStyle = `background-image: url('${BG_RANDOM_IMAGE_SRC || ""}')`
+const bodyStyle = `background-image: url('${BG_IMG_SRC}')`
 ---
 
 <html lang="en">
@@ -16,7 +16,7 @@ const bodyStyle = `background-image: url('${BG_RANDOM_IMAGE_SRC || ""}')`
     <BaseHead title="Journal"/>
 </head>
 
-<body class="dark" style={bodyStyle}>
+<body class="dark bg-cover" style={bodyStyle}>
 <div class="sticky top-0">
     <PostHeader header={POST_HEADER} prefix="journal"/>
 </div>
