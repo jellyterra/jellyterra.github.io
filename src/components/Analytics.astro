@@ -9,34 +9,35 @@ interface Props {
 }
 
 const {analytics} = Astro.props;
----
 
-{import.meta.env.PROD?
-<Fragment set:html={`<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "${CF_WEB_ANALYTICS_TOKEN}"}'></script>`}/>:null}
-
-<div id="AnalyticsTip" class="hidden z-10 fixed w-full h-full flex-col justify-between bg-opacity-70 bg-light">
+const dialog = `
+<div id="AnalyticsTip" class="flex top-0 left-0 z-10 fixed w-full h-full flex-col justify-between bg-opacity-70 bg-light">
     <div></div>
     <div class="w-full bottom-0 pl-5 pr-5">
         <div class="p-8 pl-10 pr-10 flex flex-wrap gap-10 items-center border-t border-l border-r border-blue-400 rounded-t-2xl shadow-xl bg-opacity-95 bg-light text-black">
             <a target="_blank" href="https://github.com/dashanalytics/">
                 <img src="https://avatars.githubusercontent.com/u/181559610" width="50" height="50" alt="Dashanalytics"/>
             </a>
-            <Article>
-                <h3>Privacy Notices</h3>
+            <div class="flex flex-col gap-2">
+                <h3 class="font-bold text-xl">Privacy Notices</h3>
                 <p>
                     The website collects anonymous statistics data for analyzing web traffic and does not require Cookie.
                     Your data will not be shared with third-party.
                 </p>
-            </Article>
-            <a href="" id="AnalyticsTipConfirm" class="ml-auto p-2 pl-5 pr-5 rounded-full font-extrabold text-white bg-blue-900">
+            </div>
+            <a href="#" id="AnalyticsTipConfirm" class="ml-auto p-2 pl-5 pr-5 rounded-full font-extrabold text-white bg-blue-900">
                 Got it!
             </a>
         </div>
     </div>
-</div>
+</div>`
+---
 
 {import.meta.env.PROD?
-<script define:vars={{analytics}}>
+<Fragment
+        set:html={`<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "${CF_WEB_ANALYTICS_TOKEN}"}'></script>`}/>:null}
+
+<script define:vars={{analytics, dialog}}>
     function uuidGen() {
         return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, c => (+c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> +c / 4).toString(16))
     }
@@ -52,20 +53,18 @@ const {analytics} = Astro.props;
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+        if (isConfirmed) return
+        document.body.insertAdjacentHTML('beforeend', dialog)
+
         const tip = document.getElementById('AnalyticsTip')
         const confirm = document.getElementById('AnalyticsTipConfirm')
 
         confirm.addEventListener('click', () => {
             localStorage.setItem('Analytics:Confirmed', true)
-            tip.classList.remove('flex')
-            tip.classList.add('hidden')
+            tip.remove()
+            if (uuid !== '0') report()
         })
-
-        if (isConfirmed === null) {
-            tip.classList.remove('hidden')
-            tip.classList.add('flex')
-        }
     })
 
     if (uuid !== '0') report()
-</script>:null}
+</script>
