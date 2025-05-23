@@ -1,6 +1,5 @@
 ---
 import Article from "./Article.astro";
-import {CF_WEB_ANALYTICS_TOKEN} from "../consts";
 interface Props {
     analytics: {
         host: string
@@ -32,10 +31,6 @@ const dialog = `
     </div>
 </div>`
 ---
-
-{import.meta.env.PROD?
-<Fragment
-        set:html={`<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "${CF_WEB_ANALYTICS_TOKEN}"}'></script>`}/>:null}
 
 <script define:vars={{analytics, dialog}}>
     function uuidGen() {

@@ -22,7 +22,6 @@ export const AVATAR_IMG_SRC = 'https://avatars.githubusercontent.com/u/80201595'
 
 export const NEXTCLOUD_DROPBOX = 'https://get.jellyterra.com/url/p/nextcloud/dropbox'
 
-export const CF_WEB_ANALYTICS_TOKEN = "b7aba75feaa64572ac71536e1b51ab22"
 export const ANALYTICS = {
     host: 'https://analytics.jellyterra.com',
     deployTime: formatTime(new Date(Date.now()))
