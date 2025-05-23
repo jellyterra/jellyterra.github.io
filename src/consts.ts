@@ -77,6 +77,10 @@ export const HEADER = {
             href: "/self-host"
         },
         {
+            title: "Live Stream",
+            href: "https://owncast.jellyterra.com:8443/"
+        },
+        {
             title: "GitHub",
             href: "https://github.com/jellyterra"
         },
@@ -155,20 +159,16 @@ export const FOOTER = {
             ],
         },
         {
-            title: "Blog",
+            title: "Sense",
             links: [
                 {
-                    title: "Activities",
-                    href: "https://jellyterra.com/blog",
+                    title: "Spotify Playlists",
+                    href: "https://open.spotify.com/user/t7l8rdnzrcne9lcgnp97hlk4b/playlists",
                 },
                 {
-                    title: "Experience",
-                    href: "https://jellyterra.com/blog",
-                },
-                {
-                    title: "Techniques",
-                    href: "https://jellyterra.com/blog",
-                },
+                    title: "Live Stream",
+                    href: "https://owncast.jellyterra.com:8443/"
+                }
             ]
         },
         {
