@@ -8,7 +8,7 @@ function formatTime(date: Date) {
     const hour = date.getUTCHours().toString().padEnd(2, '0')
     const minute = date.getUTCMinutes().toString().padEnd(2, '0')
     const second = date.getUTCSeconds().toString().padEnd(2, '0')
-    return +`${year}${month}${day}${hour}${minute}${second}`
+    return +`${year}.${month}.${day}-${hour}:${minute}:${second}`
 }
 
 export const SITE_HOST = 'https://www.jellyterra.com'
@@ -70,10 +70,6 @@ export const HEADER = {
         {
             title: "Fun Stuff",
             href: "/projects"
-        },
-        {
-            title: "Self-Host",
-            href: "/self-host"
         },
         {
             title: "Live Stream",

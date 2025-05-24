@@ -1,32 +1,28 @@
 # Profile
 
 Boy born in 2006.
+MBTI: ISTP
 
-💙 MBTI: ISTP [\[Virtuoso\]](https://www.16personalities.com/istp-personality)
+Focusing on:
 
-⚒️ Go, C/C++, Scala, Kotlin, Python, Rust
+- Computer architecture.
+- Formal methods and verification.
+- Programming language theory, program analysis and compiler.
 
-⚛ STM32, ESP32, FPGA
+And sometimes:
 
-⌨️ NixOS/KDE, Linux user since 2016.
+- Machine learning with JAX, Vision Transformer in CV.
+- Write articles about infrastructure, techniques and mathematics.
+- Develop micro web services and apps.
+- DIY somes PCBs, mainly to meet my requirements.
+- STM32 and ESP32 applications.
 
-🎮 Minecraft, WebLiero
+Workstation with IDEA and VSCode on NixOS/Plasma (amd64).
 
-👾 Joined GitHub in **Feb 4th, 2017**, UID: 25548159 (deleted)
-
-🦊 GitLab: [Jelly Terra](https://gitlab.com/jellyterra)
-
-I am learning and working on:
-
-* Compilers and program analysis
-* Digital hardware design
-* DIY circuit boards and applications with KiCad
-* Infrastructure
-* Productivity and automation tools
+Servers with self-hosted services on Fedora (amd64) and ArchLinux (riscv64gcv).
 
 I have mainly focused on learning hardware architecture and PL theory since 2023.
 
-But my knowledge in these is still shallow. I CRAVE GUIDANCE! **:D**
-
-Life is short. Three twenty of years is not enough to do many things.
+Life is short.
+Three multiples twenty of years is not enough to do many things.
 I hope my life to be fulfilling and my visions about technologies and society to become true.

@@ -2,7 +2,7 @@
 const {media, ...rest} = Astro.props
 ---
 
-<div class:list={["dark:invert", rest['class']]}>
+<div class:list={["max-sm:scale-75 dark:invert", rest['class']]}>
     {media.map((item: any) =>
             <a target="_blank" href={item.href}>
                 <img class="size-8" src={`https://simpleicons.org/icons/${item.icon}.svg`} alt={item.icon}>

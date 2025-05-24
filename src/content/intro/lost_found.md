@@ -1,15 +1,17 @@
 # lost+found
 
-***The less you have, the more you fear losing.***
+***The less I have, the more I fear losing it.***
 
-Writing about past, is my way of making peace with past self, a way to comfort myself.
+Joined GitHub in **Feb 4th, 2017**, UID: 25548159 (deleted)
 
-Here are the ideas and repos I've **dropped** in the past.
+Writing about past, is my way of making peace with past self, is a way to comfort myself.
 
-Most of them were just ideas and had not been fully implemented.
+Here are the ideas and repos I've dropped in the past.
 
-The deletion of my past accounts and activities is a **great regret** for me, which I must to get out from.
+Most of them were just fresh ideas and had been only implemented a bit.
+
+The deletions I made in 2019 and 2020 of my past accounts and activities is a great regret for me, which I must to get out from today.
 
 2023 means a lot to me. New domains, fantastic mates, inspiring future ...
 
-***It is a rebirth, a new beginning ...***
+**It is a rebirth, a new beginning ...**
