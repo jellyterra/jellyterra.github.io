@@ -2,13 +2,13 @@
 // You can import this data from anywhere in your site by using the `import` keyword.
 
 function formatTime(date: Date) {
-    const year = date.getUTCFullYear().toString().padEnd(4, '0')
-    const month = (date.getUTCMonth() + 1).toString().padEnd(2, '0')
-    const day = date.getUTCDate().toString().padEnd(2, '0')
-    const hour = date.getUTCHours().toString().padEnd(2, '0')
-    const minute = date.getUTCMinutes().toString().padEnd(2, '0')
-    const second = date.getUTCSeconds().toString().padEnd(2, '0')
-    return +`${year}.${month}.${day}-${hour}:${minute}:${second}`
+    const year = date.getUTCFullYear().toString().padStart(4, '0')
+    const month = (date.getUTCMonth() + 1).toString().padStart(2, '0')
+    const day = date.getUTCDate().toString().padStart(2, '0')
+    const hour = date.getUTCHours().toString().padStart(2, '0')
+    const minute = date.getUTCMinutes().toString().padStart(2, '0')
+    const second = date.getUTCSeconds().toString().padStart(2, '0')
+    return `${year}.${month}.${day}-${hour}:${minute}:${second}`
 }
 
 export const SITE_HOST = 'https://www.jellyterra.com'
