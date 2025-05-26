@@ -73,7 +73,7 @@ export const HEADER = {
         },
         {
             title: "Live Stream",
-            href: "https://owncast.jellyterra.com:8443/"
+            href: "https://get.jellyterra.com/live-stream"
         },
         {
             title: "GitHub",
@@ -99,15 +99,21 @@ export const FOOTER = {
     media: [
         {
             icon: "github",
+            rel: "me",
             href: "https://github.com/jellyterra"
         },
         {
             icon: "x",
+            rel: "me",
             href: "https://x.com/jellyterra"
         },
         {
             icon: "youtube",
             href: "https://www.youtube.com/@jellyterra",
+        },
+        {
+            icon: "obsstudio",
+            href: "https://get.jellyterra.com/live-stream"
         },
         {
             icon: "nextcloud",
@@ -123,7 +129,13 @@ export const FOOTER = {
         },
         {
             icon: "maildotru",
+            rel: "me",
             href: "mailto:jellyterra@symboltics.com",
+        },
+        {
+            icon: "monkeytie",
+            rel: "pgpkey",
+            href: "https://github.com/jellyterra.gpg"
         }
     ],
 
@@ -162,7 +174,7 @@ export const FOOTER = {
                 },
                 {
                     title: "Live Stream",
-                    href: "https://owncast.jellyterra.com:8443/"
+                    href: "https://get.jellyterra.com/live-stream"
                 }
             ]
         },
