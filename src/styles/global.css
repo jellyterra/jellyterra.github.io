@@ -25,6 +25,10 @@ body {
     @apply bg-fixed duration-200 bg-light dark:bg-dark dark:text-white;
 }
 
+hr {
+    @apply border-black dark:border-white;
+}
+
 code {
     font-family: 'Droid Sans Mono', monospace;
 }
