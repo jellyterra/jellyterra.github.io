@@ -25,6 +25,12 @@ interface Props {
 
 const {source_base, entry, headings} = Astro.props;
 
+const entryInfo = {
+    id: entry.id,
+    slug: entry.slug,
+    data: entry.data,
+}
+
 const sideImage = entry.data.sideImage?.startsWith('/') || entry.data.sideImage?.startsWith('https://') ? entry.data.sideImage : `/blog/${entry.slug}/${entry.data.sideImage}`
 
 const bodyStyle = `background-image: url('${entry.data.backgroundImage || BG_IMG_SRC}')`
@@ -85,6 +91,7 @@ const bodyStyle = `background-image: url('${entry.data.backgroundImage || BG_IMG
                     <Giscus config={GISCUS_BLOG}/>
             }
         </main>
+        <Footer footer={FOOTER}/>
     </div>
     <aside id="TableOfContent"
            class="md:max-w-[20vw] overflow-y-scroll p-10 pl-6 text-sm flex flex-col gap-2 duration-200 shadow-2xl">
@@ -92,7 +99,6 @@ const bodyStyle = `background-image: url('${entry.data.backgroundImage || BG_IMG
         <TableOfContent headings={headings}/>
     </aside>
 </div>
-<Footer footer={FOOTER}/>
 <ImageLen/>
 </body>
 </html>
@@ -103,10 +109,10 @@ const bodyStyle = `background-image: url('${entry.data.backgroundImage || BG_IMG
     }
 </style>
 
-<script define:vars={{entry, headings}}>
-    localStorage.setItem(`PostTracker:blog:${entry.slug}`, JSON.stringify({
-        title: entry.data.title,
-        latestUpdate: entry.data.updateDate || entry.data.pubDate
+<script define:vars={{entryInfo, headings}}>
+    localStorage.setItem(`PostTracker:blog:${entryInfo.slug}`, JSON.stringify({
+        title: entryInfo.data.title,
+        latestUpdate: entryInfo.data.updateDate || entryInfo.data.pubDate
     }))
 
     document.addEventListener('DOMContentLoaded', () => {
