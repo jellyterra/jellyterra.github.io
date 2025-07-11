@@ -15,6 +15,8 @@ import ViewStatistics from "../components/post/ViewStatistics.astro";
 import IconButton from "../components/ui/IconButton.astro";
 import TableOfContent from '../components/post/TableOfContent.astro';
 
+import "../../node_modules/katex/dist/katex.css";
+
 interface Props {
     source_base: string
     entry: CollectionEntry<'blog'>
@@ -36,7 +38,7 @@ const bodyStyle = `background-image: url('${entry.data.backgroundImage || BG_IMG
 <body class="flex flex-col bg-cover" style={bodyStyle}>
 <div>
     <PostHeader header={POST_HEADER} prefix="blog">
-        <IconButton id="ToggleList" class="md:ml-10" icon="format_list_bulleted"/>
+        <IconButton id="ToggleList" icon="format_list_bulleted"/>
     </PostHeader>
 </div>
 <div class="h-[calc(100vh-66px)] flex bg-opacity-80 dark:bg-opacity-80 bg-light dark:bg-dark">
@@ -83,7 +85,6 @@ const bodyStyle = `background-image: url('${entry.data.backgroundImage || BG_IMG
                     <Giscus config={GISCUS_BLOG}/>
             }
         </main>
-        <Footer footer={FOOTER}/>
     </div>
     <aside id="TableOfContent"
            class="md:max-w-[20vw] overflow-y-scroll p-10 pl-6 text-sm flex flex-col gap-2 duration-200 shadow-2xl">
@@ -91,6 +92,7 @@ const bodyStyle = `background-image: url('${entry.data.backgroundImage || BG_IMG
         <TableOfContent headings={headings}/>
     </aside>
 </div>
+<Footer footer={FOOTER}/>
 <ImageLen/>
 </body>
 </html>

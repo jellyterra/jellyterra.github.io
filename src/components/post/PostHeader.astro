@@ -13,7 +13,7 @@ interface Props {
             height: number
         },
         nav: {
-            title: string
+            icon: string
             href: string
         }[]
     }
@@ -30,28 +30,30 @@ const {header, prefix} = Astro.props
         <nav class="max-sm:mr-2 mr-20 flex flex-wrap items-center gap-10">
             {
                 header.nav.map((link: any) =>
-                        <a class="select-none duration-200 font-bold hover:text-gray-500" target="_blank"
-                           href={link.href}>{link.title}</a>
+                        <a class="select-none duration-200 font-bold hover:text-gray-500 dark:invert" target="_blank"
+                           href={link.href}><img class="size-6" src={`https://simpleicons.org/icons/${link.icon}.svg`} alt={link.icon}></a>
                 )
             }
         </nav>
+        <div class="max-sm:hidden mr-10">
+            <IconDropdown content-class="md:w-[30vw] md:right-0" icon="update">
+                <div class="p-4 flex flex-col gap-4">
+                    <Article>
+                        <h3><span class="material-symbols-outlined">update</span><span>Post Update Tracker</span></h3>
+                    </Article>
+                    <PostTracker prefix={prefix}/>
+                </div>
+            </IconDropdown>
+            <IconDropdown content-class="w-max md:right-0" icon="rss_feed">
+                <div class="p-4">
+                    <Article>
+                        <h3><span class="material-symbols-outlined">rss_feed</span><span>RSS Feed</span></h3>
+                        <code class="astro-code">{SITE_HOST}/{prefix}/rss.xml</code>
+                    </Article>
+                </div>
+            </IconDropdown>
+        </div>
         <DarkModeButton/>
-        <IconDropdown class="md:w-[30vw] md:right-0" icon="update">
-            <div class="p-4 flex flex-col gap-4">
-                <Article>
-                    <h3><span class="material-symbols-outlined">update</span><span>Post Update Tracker</span></h3>
-                </Article>
-                <PostTracker prefix={prefix}/>
-            </div>
-        </IconDropdown>
-        <IconDropdown class="w-max md:right-0" icon="rss_feed">
-            <div class="p-4">
-                <Article>
-                    <h3><span class="material-symbols-outlined">rss_feed</span><span>RSS Feed</span></h3>
-                    <code class="astro-code">{SITE_HOST}/{prefix}/rss.xml</code>
-                </Article>
-            </div>
-        </IconDropdown>
         <slot/>
     </div>
 </header>

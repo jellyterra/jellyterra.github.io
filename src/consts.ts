@@ -211,7 +211,7 @@ export const POST_HEADER = {
     },
     nav: [
         {
-            title: "GitHub",
+            icon: "github",
             href: "https://github.com/jellyterra"
         },
     ],

@@ -8,9 +8,9 @@ interface Props {
 const {icon, ...rest} = Astro.props
 ---
 
-<div class="dropdown">
-    <span class="dropdown-button select-none rounded-full p-[10px] duration-200 material-symbols-outlined">{icon}</span>
-    <div class:list={['dropdown-content rounded-2xl shadow-xl dark:shadow-blue-300 bg-light dark:bg-dark', rest['class']]}
+<div class:list={['dropdown', rest['class']]}>
+    <span class:list={["dropdown-button select-none rounded-full p-[10px] duration-200 material-symbols-outlined", rest['icon-class']]}>{icon}</span>
+    <div class:list={['dropdown-content rounded-2xl shadow-xl dark:shadow-blue-300 bg-light dark:bg-dark', rest['content-class']]}
          {...rest}>
         <slot/>
     </div>
